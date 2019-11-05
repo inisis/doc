@@ -1,0 +1,1 @@
+> * concurrency = qps * latency(s)
