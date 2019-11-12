@@ -10,3 +10,7 @@ awk -F, '{OFS=","; print$1, $8, $11, $12, $14, $16}' train.csv > train_local.csv
 ```shell
 awk -F, '{print$1}'  /nas/csv/Q4_5751_2019.10.18.csv | xargs -i cp -sr {} /nas/user/xuehui/test/coco/images/
 ```
+> * use shell to do delete string in line command
+```shell
+sed -i '/^-1/d' sample.tx
+```
