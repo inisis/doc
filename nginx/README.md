@@ -3,3 +3,7 @@
 vim /etc/logrotate.d/nginx && change rotate to 10000
 logrotate /etc/logrotate.d/nginx
 ```
+> * nginx will report 403 if you are not using a proper permission, to solve that,
+```shell
+change nginx user to root;
+```
