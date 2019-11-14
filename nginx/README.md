@@ -7,3 +7,10 @@ logrotate /etc/logrotate.d/nginx
 ```shell
 change nginx user to root;
 ```
+> * use map to filter unneeded info
+```shell
+map $request $log_request {
+    ~*wado* 1;
+    default 0;
+}
+```
