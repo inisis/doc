@@ -14,3 +14,11 @@ map $request $log_request {
     default 0;
 }
 ```
+> * static file is stored in $root/url/
+```
+root /root/static/;
+           location /demo {
+           index report_demo.html;
+           }
+should be /root/static/demo/report_demo.html
+```
