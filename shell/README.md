@@ -12,5 +12,9 @@ awk -F, '{print$1}'  /nas/csv/Q4_5751_2019.10.18.csv | xargs -i cp -sr {} /nas/u
 ```
 > * use shell to do delete string in line command
 ```shell
-sed -i '/^-1/d' sample.tx
+sed -i '/^-1/d' sample.txt
+```
+> * use shell to do replace string in line command
+```shell
+sed -i 's/^1/0/g' sample.txt
 ```
