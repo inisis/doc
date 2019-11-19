@@ -18,3 +18,7 @@ sed -i '/^-1/d' sample.txt
 ```shell
 sed -i 's/^1/0/g' sample.txt
 ```
+>  * to compute the difference between two files
+```shell
+grep -F -v -f b.txt a.txt | sort | uniq
+```
