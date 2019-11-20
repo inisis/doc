@@ -22,3 +22,7 @@ sed -i 's/^1/0/g' sample.txt
 ```shell
 grep -F -v -f b.txt a.txt | sort | uniq
 ```
+>  * to ls files in very large folder
+```shell
+ls -l -f folder (-f means do not sort)
+```
