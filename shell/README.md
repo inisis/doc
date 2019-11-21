@@ -26,3 +26,8 @@ grep -F -v -f b.txt a.txt | sort | uniq
 ```shell
 ls -l -f folder (-f means do not sort)
 ```
+>  * vim column 
+```shell
+ctrl-v
+A (line tail append)
+```
