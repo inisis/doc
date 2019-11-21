@@ -30,4 +30,8 @@ ls -l -f folder (-f means do not sort)
 ```shell
 ctrl-v
 A (line tail append)
+
+or
+
+9360, 9362s/$/test/
 ```
