@@ -35,3 +35,21 @@ or
 
 9360, 9362s/$/test/
 ```
+>  * compile path
+```shell
+#gcc header
+C_INCLUDE_PATH=/usr/include/
+export C_INCLUDE_PATH
+
+#g++ header
+CPLUS_INCLUDE_PATH=$CPLUS_INCLUDE_PATH:/usr/include/
+export CPLUS_INCLUDE_PATH
+
+#dynamic libs
+LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/MyLib
+export LD_LIBRARY_PATH
+
+#static libs
+LIBRARY_PATH=$LIBRARY_PATH:/MyLib
+export LIBRARY_PATH
+```
