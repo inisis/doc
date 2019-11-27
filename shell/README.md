@@ -53,3 +53,8 @@ export LD_LIBRARY_PATH
 LIBRARY_PATH=$LIBRARY_PATH:/MyLib
 export LIBRARY_PATH
 ```
+
+> * awk in for loop 
+```shell
+for number in 1.0 0.0 "" -1.0; do awk -v num="$number"  -F, '{if($2==num) print$2}' /data/Chexpert/CheXpert-v1.0/train_local.csv | wc -l; done
+```
