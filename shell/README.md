@@ -58,3 +58,7 @@ export LIBRARY_PATH
 ```shell
 for number in 1.0 0.0 "" -1.0; do awk -v num="$number"  -F, '{if($2==num) print$2}' /data/Chexpert/CheXpert-v1.0/train_local.csv | wc -l; done
 ```
+> * merger two files by columns
+```shell
+paste a.csv b.csv -d , (divide by ,)
+```
