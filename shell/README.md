@@ -62,3 +62,7 @@ for number in 1.0 0.0 "" -1.0; do awk -v num="$number"  -F, '{if($2==num) print$
 ```shell
 paste a.csv b.csv -d , (divide by ,)
 ```
+> * split txt by percentage
+```shell
+split -l $[ $(wc -l oblique_all.csv|cut -d" " -f1) * 80 / 100 ] oblique_all.csv
+```
