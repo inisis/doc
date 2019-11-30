@@ -8,3 +8,8 @@ full page
 ctrl f(forward)
 ctrl b(backward)
 ```
+
+> * vim replace between two patterns
+```vim
+%s/,\/.*$/,0/
+```
