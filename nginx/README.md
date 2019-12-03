@@ -22,3 +22,8 @@ root /root/static/;
            }
 should be /root/static/demo/report_demo.html
 ```
+> * nginx http trim file name
+```
+vim src/http/modules/ngx_http_autoindex_module.c
+change #define NGX_HTTP_AUTOINDEX_NAME_LEN     50
+```
