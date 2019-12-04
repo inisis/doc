@@ -7,4 +7,5 @@ docker ps -a --no-trunc
 1.follow instruction in https://mirror.tuna.tsinghua.edu.cn/help/docker-ce/ to install docker ce
 2.to use gpu, install nvidia-container-runtime then, use nvidia-container-runtime-script.sh
 3.to speed up docker pull, use alibaba to accelerate it. https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
+4.sudo systemctl restart docker if gpu cannot be used.
 ```
