@@ -59,33 +59,81 @@ def get_points(key_point):
 
 
 def get_value(cfg):
-    value = [0] * 9
+    value = [0] * 9 # x, y ,v v=0 point missing v=1 point invisible v=2 point visible
+    keep_index = []
     for key_point in cfg.keyPoints:
         if key_point.get('objectLabels')[0] == 'seventh_cervical_vertebra':
             x, y = get_points(key_point)
             value[0:3] = x,y,2
+            keep_index.append(0)
         if key_point.get('objectLabels')[0] == 'left_costophrenic_angle':
             x, y = get_points(key_point)
             value[3:6] = x,y,2
+            keep_index.append(1)
         if key_point.get('objectLabels')[0] == 'right_costophrenic_angle':
             x, y = get_points(key_point)
             value[6:9] = x,y,2
-    return value
+            keep_index.append(2)
+    
+    if value[3] > value[6]: # swap left and right
+        value[3:6], value[6:9] = value[6:9], value[3:6]
+
+    assert value[3] <= value[6]
+    return value, keep_index
 
 
-def get_box(value):
+def get_box(value, keep_index, cfg):
+    # x, y(left top) && width height
     assert(len(value) == 9)
+    value_refined = get_refined(value, keep_index, cfg)
+
+    assert value_refined[3] <= value_refined[6]
+
     box = [0] * 4
-    box[0] = min(value[::3])
-    box[1] = min(value[1::3])
-    box[2] = max(value[::3])
-    box[3] = max(value[1::3])
+    box[0] = min(value_refined[::3])
+    box[1] = min(value_refined[1::3])
+    box[2] = max(value_refined[::3]) - box[0]
+    box[3] = max(value[1::3]) - box[1]
     return box
+
+
+def get_refined(value, keep_index, cfg):
+    if len(keep_index) == 3:
+        return value
+    elif keep_index == [1,2] or keep_index == [2,1]: # missing top
+        value_new = value
+        value_new[0] = value[3] # change x
+        return value_new
+    elif keep_index == [0,1] or keep_index == [1,0]: # missing right
+        value_new = value
+        value_new[6] = cfg.imageShape.get('width') # change x
+        value_new[7] = value[1] # change y
+        return value_new
+    elif keep_index == [0,2] or keep_index == [2,0]: # mising left
+        value_new = value
+        value_new[4] = value[1] # change y
+        return value_new
+    elif keep_index == [0]: # mising left and right
+        value_new = value
+        value_new[4] = cfg.imageShape.get('height') # change y
+        value_new[6] = cfg.imageShape.get('width') # change x
+        value_new[7] = cfg.imageShape.get('height') # change y
+        return value_new
+    elif keep_index == [1]: # mising top and right
+        value_new = value
+        value_new[0] = value[3] # change x
+        value_new[6] = cfg.imageShape.get('width') # change x
+        return value_new
+    elif keep_index == [2]: # mising left and top
+        return value
+    else:
+        raise Exception("Unexpected index: {}".format(*keep_index))
 
 
 def get_area(box):
     assert(len(box) == 4)
     return (box[3] - box[1]) * (box[2] - box[0])
+
 
 def run(args):
     coco = dict()
@@ -116,10 +164,13 @@ def run(args):
     with open(args.json_file) as json_file:
         for filename in json_file:
             filename = filename.strip('\n')
+            print("Converting -----> ", filename)
             with open(filename) as f:
                 cfg = edict(json.load(f))
-                value = get_value(cfg)
-                box = get_box(value)
+                value, keep_index = get_value(cfg)
+                if len(keep_index) == 0:
+                    continue
+                box = get_box(value, keep_index, cfg)
                 add_image(coco, cfg, filename, image_id)
                 add_anno(coco, cfg, value, box, image_id, category_id, annotation_id)
                 image_id += 1
