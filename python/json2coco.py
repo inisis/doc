@@ -33,8 +33,8 @@ def add_category(coco, name, category_id):
     category_item['name'] = name
     category_item['keypoints'] = [
                 "seventh_cervical_vertebra",
-                "left_costophrenic_angle",
-                "right_costophrenic_angle"]
+                "right_costophrenic_angle",
+                "left_costophrenic_angle"]
     category_item['skeleton'] = [[2, 3], [1, 2], [1, 3]]
     coco['categories'].append(category_item)
 
@@ -66,19 +66,19 @@ def get_value(cfg):
             x, y = get_points(key_point)
             value[0:3] = x,y,2
             keep_index.append(0)
-        if key_point.get('objectLabels')[0] == 'left_costophrenic_angle':
+        if key_point.get('objectLabels')[0] == 'right_costophrenic_angle':
             x, y = get_points(key_point)
             value[3:6] = x,y,2
             keep_index.append(1)
-        if key_point.get('objectLabels')[0] == 'right_costophrenic_angle':
+        if key_point.get('objectLabels')[0] == 'left_costophrenic_angle':
             x, y = get_points(key_point)
             value[6:9] = x,y,2
             keep_index.append(2)
     
-    if value[3] > value[6]: # swap left and right
+    if value[3] > value[6] and (2 in keep_index): # swap left and right(left should > right)
         value[3:6], value[6:9] = value[6:9], value[3:6]
+        assert value[3] <= value[6]
 
-    assert value[3] <= value[6]
     return value, keep_index
 
 
@@ -101,30 +101,30 @@ def get_refined(value, keep_index, cfg):
     if len(keep_index) == 3:
         return value
     elif keep_index == [1,2] or keep_index == [2,1]: # missing top
-        value_new = value
+        value_new = value.copy()
         value_new[0] = value[3] # change x
         return value_new
     elif keep_index == [0,1] or keep_index == [1,0]: # missing right
-        value_new = value
+        value_new = value.copy()
         value_new[6] = cfg.imageShape.get('width') # change x
         value_new[7] = value[1] # change y
         return value_new
     elif keep_index == [0,2] or keep_index == [2,0]: # mising left
-        value_new = value
+        value_new = value.copy()
         value_new[4] = value[1] # change y
         return value_new
     elif keep_index == [0]: # mising left and right
-        value_new = value
+        value_new = value.copy()
         value_new[4] = cfg.imageShape.get('height') # change y
         value_new[6] = cfg.imageShape.get('width') # change x
         value_new[7] = cfg.imageShape.get('height') # change y
         return value_new
-    elif keep_index == [1]: # mising top and right
-        value_new = value
+    elif keep_index == [1]: # mising top and left
+        value_new = value.copy()
         value_new[0] = value[3] # change x
         value_new[6] = cfg.imageShape.get('width') # change x
         return value_new
-    elif keep_index == [2]: # mising left and top
+    elif keep_index == [2]: # mising right and top
         return value
     else:
         raise Exception("Unexpected index: {}".format(*keep_index))
