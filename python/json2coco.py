@@ -75,10 +75,6 @@ def get_value(cfg):
             value[6:9] = x,y,2
             keep_index.append(2)
     
-    if value[3] > value[6] and (2 in keep_index): # swap left and right(left should > right)
-        value[3:6], value[6:9] = value[6:9], value[3:6]
-        assert value[3] <= value[6]
-
     return value, keep_index
 
 
@@ -86,8 +82,6 @@ def get_box(value, keep_index, cfg):
     # x, y(left top) && width height
     assert(len(value) == 9)
     value_refined = get_refined(value, keep_index, cfg)
-
-    assert value_refined[3] <= value_refined[6]
 
     box = [0] * 4
     box[0] = min(value_refined[::3])
