@@ -70,3 +70,7 @@ split -l $[ $(wc -l oblique_all.csv|cut -d" " -f1) * 80 / 100 ] oblique_all.csv
 ```shell
 lsb_release -a
 ```
+> * awk print substring
+```shell
+awk -F, {'if($2>0.5) print substr($1, 5)'} predict.csv
+```
