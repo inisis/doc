@@ -5,6 +5,7 @@ import logging
 import time
 import glob
 import pydicom
+from pydicom.multival import MultiValue
 import SimpleITK as sitk
 import numpy as np
 import cv2
@@ -29,26 +30,37 @@ def dcm2jpg(dcm_file, jpg_file, window=1, level=99):
         time.strftime("%Y-%m-%d %H:%M:%S"), dcm_file))
    
     dcm = pydicom.dcmread(dcm_file, force=True)
-
-    window = dcm.WindowWidth
-    level = dcm.WindowCenter
-
+    if hasattr(dcm, 'WindowWidth'):
+        window = dcm.WindowWidth
+        if type(window) is MultiValue: 
+            window = window[0]
+    else:
+        window = (np.max(dcm.pixel_array) - np.min(dcm.pixel_array)) / 2
+    
+    if hasattr(dcm, 'WindowCenter'):
+        level = dcm.WindowCenter
+        if type(level) is MultiValue: 
+            level = level[0]
+    else:
+        level = (np.max(dcm.pixel_array) + np.min(dcm.pixel_array)) / 2
     if hasattr(dcm, 'PhotometricInterpretation'):
         if dcm.PhotometricInterpretation == 'MONOCHROME1':
-            dcm_temp = '/home/yaojin/temp.dcm'
+            dcm_temp = './temp.dcm'
             value = 2**(dcm.BitsStored - 1)
             if level > value or window > value:
                 value = 2 * value
-            print(value)
-            # print(np.max(dcm.pixel_array))
-            # print(np.min(dcm.pixel_array))
             pixel_array = (value - dcm.pixel_array).astype(np.uint16)
             dcm.PixelData = pixel_array.tobytes()
             dcm.PhotometricInterpretation = 'MONOCHROME2'
             dcm.save_as(dcm_temp)
-            window = dcm.WindowWidth
-            level = value - dcm.WindowCenter
+            level = value - level
             dcm_file = dcm_temp
+
+    if hasattr(dcm, 'IconImageSequence'):
+        dcm_temp = './temp.dcm'
+        dcm.IconImageSequence=''
+        dcm.save_as(dcm_temp)
+        dcm_file = dcm_temp
 
     reader = vtkDICOMImageReader()
     reader.SetFileName(dcm_file)
@@ -68,16 +80,13 @@ def dcm2jpg(dcm_file, jpg_file, window=1, level=99):
 
     shiftScaleFilter.SetShift(-1.0*windowlevel.GetOutput().GetScalarRange()[0])
     oldRange = windowlevel.GetOutput().GetScalarRange()[1] - windowlevel.GetOutput().GetScalarRange()[0]
-    if oldRange == 0.0:
-        # oldRange = 255
-        pass
     newRange = 255
 
     shiftScaleFilter.SetScale(newRange/oldRange)
     shiftScaleFilter.Update()
 
     writer = vtkPNGWriter()
-    writer.SetFileName('/home/yaojin/temp.jpg')
+    writer.SetFileName(jpg_file)
     writer.SetInputConnection(windowlevel.GetOutputPort())
     writer.Write()
 
