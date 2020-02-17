@@ -74,3 +74,7 @@ lsb_release -a
 ```shell
 awk -F, {'if($2>0.5) print substr($1, 5)'} predict.csv
 ```
+> * awk calculate average
+```shell
+awk -F, '{if($2==12) {sum += $3; i+=1}};END {print sum; print sum/i; print i}' dcm_10_APPA_Bits_WindowLevel.csv 
+```
