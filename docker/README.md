@@ -13,3 +13,16 @@ docker ps -a --no-trunc
 ```docker
 usermod -a -G docker ubuntu
 ```
+> * CMD ENTRYPOINT
+```docker
+CMD ["python"] will create pid 1 with cmd, this won't get environment variable
+CMD python will create pid 1 with /bin/sh -c python and another process called python
+
+ENTRYPOINT is the same
+
+if user needs to source env first, it's recommended to use ENTRYPOINT['run.sh'], 
+run.sh is like this
+#! /bin/bash
+source env
+python ***.py
+```
