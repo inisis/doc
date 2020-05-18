@@ -12,6 +12,7 @@ docker ps -a --no-trunc
 > * user add group
 ```docker
 usermod -a -G docker ubuntu
+newgrp docker
 ```
 > * CMD ENTRYPOINT
 ```docker
