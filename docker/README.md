@@ -27,3 +27,9 @@ run.sh is like this
 source env
 python ***.py
 ```
+> * iptables:No chain/target/match by the name
+```
+sudo iptables -t filter -F
+sudo iptables -t filter -X
+systemctl restart docker
+```
