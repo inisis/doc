@@ -28,8 +28,17 @@ source env
 python ***.py
 ```
 > * iptables:No chain/target/match by the name
-```
+```docker
 sudo iptables -t filter -F
 sudo iptables -t filter -X
 systemctl restart docker
+```
+> * docker registry harbor
+```shell
+tar zxvf harbor-offline-installer-v2.0.0.tgz 
+cd harbor
+cp harbor.yml.tmpl harbor.yml
+change http && https ports accordingly
+change data_volume
+sudo ./install.sh
 ```
