@@ -42,3 +42,12 @@ change http && https ports accordingly
 change data_volume
 sudo ./install.sh
 ```
+> * install certificate on linux
+```shell
+## ubuntu
+cp registry.crt /usr/local/share/ca-certificates/
+chmod 644 /usr/local/share/ca-certificates/registry.crt
+update-ca-certificates
+systemctl restart docker.service # better set "live-restore": true
+## centos
+```
