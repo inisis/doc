@@ -50,4 +50,7 @@ chmod 644 /usr/local/share/ca-certificates/registry.crt
 update-ca-certificates
 systemctl restart docker.service # better set "live-restore": true
 ## centos
+cp registry.crt /etc/pki/trust/anchors/
+update-ca-certificates
+systemctl restart docker.service # better set "live-restore": true
 ```
