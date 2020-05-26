@@ -13,3 +13,15 @@ ctrl b(backward)
 ```vim
 %s/,\/.*$/,0/
 ```
+
+> * Column add && delete
+```vim
+## delete
+ctrl + v
+d
+
+## add
+ctrl + v
+shift + i
+double esc
+```
