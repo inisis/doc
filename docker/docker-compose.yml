@@ -1,0 +1,72 @@
+version: '2.3'
+services:
+  exposure_under:
+    image: registry.jfhealthcare.cn:5000/ai/exposed_under@sha256:837b37b72b584ed90f153d1e2aad3cc897a1653a5ccc14004cb588a7134d6dfc
+    container_name: EXPOSED_UNDER_V1.1
+    restart: always
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - /mnt:/mnt
+    ports:
+        - 8998:8888
+    command: bash -c "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/;/opt/felson/production/run_cpu.sh"
+  exposure_over:
+    image: registry.jfhealthcare.cn:5000/ai/exposed_over@sha256:fd391a47dd07b164c3d55b16cfced0fcdab2b1a830273f396ee7da1283fb7979
+    container_name: EXPOSED_OVER_V1.1
+    restart: always
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - /mnt:/mnt
+    ports:
+        - 8997:8888
+    command: bash -c "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/;/opt/felson/production/run_cpu.sh"
+  blur:
+    image: registry.jfhealthcare.cn:5000/ai/blur@sha256:30db3a09ba99c5cae632ec3099a9b755ffd9af0f87d4d5816398bd4c947418fa
+    container_name: BLUR_V1.1
+    restart: always
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - /mnt:/mnt
+    ports:
+        - 8996:8888
+    command: bash -c "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/;/opt/felson/production/run_cpu.sh"
+  chest_pa:
+    image: registry.jfhealthcare.cn:5000/ai/chest_pa@sha256:1658697fd31687af1a24c369da1c320ab0046030ef7cd44624575a59ff2e2626
+    container_name: CHEST_PA_V1.1
+    restart: always
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - /mnt:/mnt
+    ports:
+        - 8992:8888
+    command: bash -c "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/;/opt/felson/production/run_cpu.sh"
+  keypoints:
+    image: registry.jfhealthcare.cn:5000/ai/keypoints@sha256:aa34f34f1b84429870beebc654704ef6903730b69ae08248eba12303bc7f3923
+    container_name: KEYPOINTS_V1.1
+    restart: always
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - /mnt:/mnt
+    ports:
+        - 8993:8888
+    command: bash -c "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/;/opt/felson/production/run_cpu.sh"
+  foreign_obj:
+    image: registry.jfhealthcare.cn:5000/ai/foreign_obj@sha256:e01ce2d662447c7113e1113b992997142aeaeff2d3771b9ccde12569a8c7363b
+    container_name: FOREIGN_OBJ_V1.2
+    restart: always
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - /mnt:/mnt
+    ports:
+        - 8990:8888
+    command: bash -c "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/;/opt/felson/production/run_cpu.sh"
+  oldtb:
+    image: registry.jfhealthcare.cn:5000/ai/oldtb@sha256:2f2d55967baf35ec5a51a914f11688e211fd6d743468f7ccc7e767125f532c11
+    container_name: OLDTB_V1.4
+    restart: always
+    volumes:
+        - /etc/localtime:/etc/localtime
+        - /mnt:/mnt
+    ports:
+        - 8995:8888
+    command: bash -c "export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/lib/;/opt/felson/production/run_cpu.sh"
