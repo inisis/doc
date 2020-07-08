@@ -109,3 +109,7 @@ find . -type f -size -4096c
     512-byte blocks and never 1 Kilobyte blocks, which is different
     to the behaviour of -ls.
 ```
+> * rotate image
+```shell
+for each in $(cat keypoint_dev.csv); do convert $each -rotate "$((RANDOM%5*90))" rotate/$(basename $each); done
+```
