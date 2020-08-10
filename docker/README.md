@@ -55,3 +55,14 @@ update-ca-trust enable
 update-ca-trust extract
 systemctl restart docker.service # better set "live-restore": true
 ```
+> * rm /var/lib/docker Device or resource busy
+```shell
+umount /path
+```
+> * change data root
+```shell
+vim /etc/docker/daemon.json
+{
+    "data-root": "/new/docker/root"
+}
+```
