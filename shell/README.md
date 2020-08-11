@@ -113,3 +113,14 @@ find . -type f -size -4096c
 ```shell
 for each in $(cat keypoint_dev.csv); do convert $each -rotate "$((RANDOM%5*90))" rotate/$(basename $each); done
 ```
+> * vim set tab to 4 space
+```shell
+vim ~/.vimrc
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set autoindent
+
+:%retab
+```
