@@ -13,6 +13,7 @@ docker ps -a --no-trunc
 ```docker
 usermod -a -G docker ubuntu
 newgrp docker
+sudo -u ubuntu -H docker info
 ```
 > * CMD ENTRYPOINT
 ```docker
