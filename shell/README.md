@@ -14,9 +14,10 @@ awk -F, '{print$1}'  /nas/csv/Q4_5751_2019.10.18.csv | xargs -i cp -sr {} /nas/u
 ```shell
 sed -i '/^-1/d' sample.txt
 ```
-> * use shell to do replace string in line command
+> * use shell to do replace string in line command; replace before first space
 ```shell
 sed -i 's/^1/0/g' sample.txt
+sed -i 's/[^ ]* /0 /' {}
 ```
 >  * to compute the difference between two files (a - b)
 ```shell
