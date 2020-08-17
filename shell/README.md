@@ -125,3 +125,9 @@ set autoindent
 
 :%retab
 ```
+
+> * change file owner and group
+```shell
+chown 1000 jenkins/
+chgrp 1000 jenkins/
+```
