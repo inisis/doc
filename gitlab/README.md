@@ -34,3 +34,11 @@ git lfs track YOUR_FILE
 
 git lfs untrack YOUR_FILE
 ```
+> * how to diff two folder on two different repo
+```shell
+in repo_a
+git remote add -f b path/to/repo_b.git
+git remote update
+git diff master remotes/b/master -- path/to/repo
+git remote rm b
+```
