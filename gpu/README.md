@@ -12,3 +12,7 @@ nvidia-smi -i 2 -pl 125
 ```shell
 nvidia-smi -q -d POWER
 ```
+> * ppa china mirror
+```shell
+replace http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu with https://launchpad.proxy.ustclug.org/graphics-drivers/ppa/ubuntu
+```
