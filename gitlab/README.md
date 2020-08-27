@@ -29,7 +29,6 @@ sudo apt-get install git-lfs
 ```shell
 git lfs install --skip-smudge ## --skip-smudge to prevent LFS from downloading or cloning files (globally) unless explicitly specified
 
-
 git lfs track YOUR_FILE
 
 git lfs untrack YOUR_FILE
