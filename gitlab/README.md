@@ -32,6 +32,12 @@ git lfs install --skip-smudge ## --skip-smudge to prevent LFS from downloading o
 git lfs track YOUR_FILE
 
 git lfs untrack YOUR_FILE
+
+git lfs update after clone
+
+git lfs fetch
+
+git lfs pull
 ```
 > * how to diff two folder on two different repo
 ```shell
