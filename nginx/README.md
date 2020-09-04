@@ -26,4 +26,7 @@ should be /root/static/demo/report_demo.html
 ```
 vim src/http/modules/ngx_http_autoindex_module.c
 change #define NGX_HTTP_AUTOINDEX_NAME_LEN     50
+./auto/configure --with-http_stub_status_module --with-http_ssl_module --with-http_realip_module --with-http_gzip_static_module
+pkill -9 nginx
+cd /usr/local/nginx/ && ./sbin/nginx -c /etc/nginx/nginx.conf
 ```
