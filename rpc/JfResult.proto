@@ -1,0 +1,72 @@
+syntax = "proto3";
+
+import "google/api/annotations.proto";
+import "google/protobuf/wrappers.proto";
+import "annotation2.proto";
+
+package jf.jfutils.proto;
+
+message Context{
+    google.protobuf.StringValue sessionId = 1;
+    google.protobuf.StringValue aiStatus = 2;
+    google.protobuf.StringValue aiMessage = 3;
+    google.protobuf.StringValue requestTs = 4;
+    google.protobuf.StringValue responseTs = 5;
+    google.protobuf.StringValue findingType = 6;
+    google.protobuf.StringValue infVer = 7;
+}
+
+message Image{
+    google.protobuf.StringValue data = 1;
+    google.protobuf.Int32Value width = 2;
+    google.protobuf.Int32Value height = 3;
+}
+
+message JfXrayResult{
+    Context context = 1;
+    Image image = 2;
+    Annotation resultReport = 3;
+}
+
+message RequestContext{
+    google.protobuf.Int32Value infTime =1; // Required, Request Time Stamp
+    google.protobuf.StringValue sessionId = 2; // Required, Request sessionId, must be unique
+    google.protobuf.StringValue tag = 3; // Required, Only works when message queue is used
+}
+
+message RequestImage{
+    RequestImageData Data = 1; // Required, Image Data
+}
+
+message RequestImageData{
+    google.protobuf.StringValue dicomPath = 1; // Required, Dicom Path
+}
+
+message Request{
+    RequestContext Context = 1; // Required, Request Context
+    RequestImage Image = 2; // Required, Request Image
+}
+
+
+message StatusRequest{
+}
+
+message StatusResponse{
+    string status=1;
+}
+
+service JFXrayService {
+
+  rpc GetStatus (StatusRequest) returns (StatusResponse) {
+    option (google.api.http) = {
+      get: "/status"
+    };
+  }
+
+  rpc ReportService (Request) returns (JfXrayResult) {
+    option (google.api.http) = {
+      post: "/wado"
+      body: "*"
+    };
+  }
+}

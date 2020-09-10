@@ -1,0 +1,66 @@
+syntax = "proto3";
+
+import "google/protobuf/wrappers.proto";
+
+package jf.jfutils.proto;;
+
+message Wado {
+    google.protobuf.StringValue wadoUrl = 1;
+    google.protobuf.StringValue studyUid = 2;
+    google.protobuf.StringValue seriesUid = 3;
+    google.protobuf.StringValue imageUid = 4;
+    google.protobuf.StringValue dicomId = 5;
+}
+
+message ImageShape {
+    google.protobuf.UInt32Value width = 1;
+    google.protobuf.UInt32Value height = 2;
+}
+
+message Voi {
+    google.protobuf.DoubleValue windowLevel = 1;
+    google.protobuf.DoubleValue windowWidth = 2;
+}
+
+message Viewport {
+    Voi voi = 1;
+}
+
+message Coordinate {
+    google.protobuf.DoubleValue x = 1;
+    google.protobuf.DoubleValue y = 2;
+}
+
+message Object {
+    google.protobuf.StringValue type = 1;  // FreehandMouse
+    repeated Coordinate points = 2;
+    google.protobuf.DoubleValue score = 3; // default: 1.0
+}
+
+message Finding {
+    Viewport viewport = 1;
+    Object object = 2;
+    google.protobuf.StringValue position = 3;
+    google.protobuf.StringValue texture = 4;
+    google.protobuf.DoubleValue score = 5;  // default: 1.0
+}
+
+message Diagnosis {
+    repeated google.protobuf.StringValue diseaseList = 1;  // categorical diseases
+    google.protobuf.StringValue relation = 2;  // diseases relation, ['and', 'or'], default 'or'
+}
+
+message Impression {
+    repeated Finding findingList = 1;
+    Diagnosis diagnosis = 2;
+    google.protobuf.StringValue position = 3;  // free text position
+    google.protobuf.StringValue description = 4;  // free text diagnosis + position
+    google.protobuf.DoubleValue score = 5;  // default: 1.0
+}
+
+message Annotation {
+    Wado wado = 1;
+    ImageShape imageShape = 2;
+    Viewport viewport = 3;
+    repeated Impression impressionList = 4;
+}
