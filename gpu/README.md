@@ -16,3 +16,23 @@ nvidia-smi -q -d POWER
 ```shell
 replace http://ppa.launchpad.net/graphics-drivers/ppa/ubuntu with https://launchpad.proxy.ustclug.org/graphics-drivers/ppa/ubuntu
 ```
+> * install nvidia gpu driver
+```
+1. download nvidia driver(.run appendix)
+
+2. Ctrl+Alt+F1
+
+3. sudo service lightdm stop
+
+4. sudo bash ×××.run
+
+5. sudo modprobe -r nvidia
+
+6. lsof /dev/nvidia*
+
+sudo vim /etc/modprobe.d/blacklist.conf
+
+blacklist nouveau
+
+sudo update-initramfs -u
+```
