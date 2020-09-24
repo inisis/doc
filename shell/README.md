@@ -131,3 +131,7 @@ set autoindent
 chown 1000 jenkins/
 chgrp 1000 jenkins/
 ```
+> * generate file for python from proto
+```shell
+protoc -I. --python_out=. *.proto
+```
