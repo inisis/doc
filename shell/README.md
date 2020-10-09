@@ -135,3 +135,7 @@ chgrp 1000 jenkins/
 ```shell
 protoc -I. --python_out=. *.proto
 ```
+> * delete ^M at the end of line
+```shell
+tr -d "\015" < tem.txt > temp.txt 
+```
