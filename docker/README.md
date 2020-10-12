@@ -67,3 +67,7 @@ vim /etc/docker/daemon.json
     "data-root": "/new/docker/root"
 }
 ```
+> * container created time
+```shell
+docker inspect -f '{{ .Created }}' IMAGE_OR_CONTAINER
+```
