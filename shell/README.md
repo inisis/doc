@@ -139,3 +139,7 @@ protoc -I. --python_out=. *.proto
 ```shell
 tr -d "\015" < tem.txt > temp.txt 
 ```
+> * find proc running directory
+```
+ls -l /proc/$PID/exe
+```
