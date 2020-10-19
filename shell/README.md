@@ -143,3 +143,9 @@ tr -d "\015" < tem.txt > temp.txt
 ```
 ls -l /proc/$PID/exe
 ```
+> * su very slow
+```shell
+hostname -f
+sudo vim /etc/hosts
+127.0.0.1 current_hostname
+```
