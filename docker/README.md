@@ -71,3 +71,8 @@ vim /etc/docker/daemon.json
 ```shell
 docker inspect -f '{{ .Created }}' IMAGE_OR_CONTAINER
 ```
+> * modify docker inspect data
+```shell
+vim /var/lib/docker/containers/<containerID>/config.v2.json
+sudo systemctl restart docker
+```
