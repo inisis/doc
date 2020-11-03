@@ -70,6 +70,7 @@ split -l $[ $(wc -l oblique_all.csv|cut -d" " -f1) * 80 / 100 ] oblique_all.csv
 > * show which system is using
 ```shell
 lsb_release -a
+cat /etc/os-release
 ```
 > * awk print substring
 ```shell
