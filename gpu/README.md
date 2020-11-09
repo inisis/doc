@@ -36,3 +36,7 @@ blacklist nouveau
 
 sudo update-initramfs -u
 ```
+> * find gpu process
+```shell
+sudo fuser -v /dev/nvidia*
+```
