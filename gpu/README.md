@@ -40,3 +40,7 @@ sudo update-initramfs -u
 ```shell
 sudo fuser -v /dev/nvidia*
 ```
+> * uninstall nvidia
+```shell
+nvidia-uninstall
+```
