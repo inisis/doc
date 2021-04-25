@@ -150,3 +150,9 @@ hostname -f
 sudo vim /etc/hosts
 127.0.0.1 current_hostname
 ```
+
+> * disk read/write
+```shell
+dd if=/root/data/dcm/1.3.6.1.4.1.9590.100.1.2.111127328611009826704705918831957848542.dcm of=/dev/null bs=1M count=1024
+dd if=/dev/zero of=/root/data/test.dbf bs=8k count=3000
+```
