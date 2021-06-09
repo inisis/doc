@@ -7,3 +7,16 @@ import torch
 b = torch.from_numpy(a)
 b.max(dim=-1)[0].max(dim=-1)[0]
 ```
+
+
+> * torch tensor data type convert
+```shell
+import numpy as np
+import torch
+
+a = numpy.random.rand(1, 127) # shape (1, 127)
+a = torch.from_numpy(a)
+
+a=a.type(torch.float32)
+a=a.float()
+```
