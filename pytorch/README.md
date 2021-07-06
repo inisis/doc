@@ -28,3 +28,9 @@ output_size = (input_size - kernel_size + 2 * padding) / stride + 1
 params = channel_in * channel_out * kernel_size * kernel_size + channel_out(bias)
 flops = 2 * channel_in * channel_out * kernel_size * kernel_size * H_output * W_output
 ```
+
+> * fc
+```
+params = (channel_in + 1) * channel_out
+flops = 2 * channel_in * channel_out
+```
