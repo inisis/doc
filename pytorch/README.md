@@ -34,3 +34,10 @@ flops = 2 * channel_in * channel_out * kernel_size * kernel_size * H_output * W_
 params = (channel_in + 1) * channel_out
 flops = 2 * channel_in * channel_out
 ```
+
+
+> * GIOU
+```
+IoU = Intersection / Union
+GIoU = IoU - (MinAreaRect - Union) / MinAreaRect
+```
