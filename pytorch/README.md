@@ -51,3 +51,10 @@ s stands for structure, (x - average pixel value) / standard deviation and compa
 
 using sliding window to create different patches
 ```
+
+> * MAP
+```
+precision = true positive / (true positive + false positive)
+recall = true positive / (true positive + true negative)
+f1 score = 2 * precision * recall / (precision + recall)
+```
