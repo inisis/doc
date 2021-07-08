@@ -57,4 +57,6 @@ using sliding window to create different patches
 precision = true positive / (true positive + false positive)
 recall = true positive / (true positive + true negative)
 f1 score = 2 * precision * recall / (precision + recall)
+
+sort all pred, and calculate precision and recall, calculate the area included
 ```
