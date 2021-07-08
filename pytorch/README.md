@@ -60,3 +60,11 @@ f1 score = 2 * precision * recall / (precision + recall)
 
 sort all pred, and calculate precision and recall, calculate the area included
 ```
+
+> * AUC
+```
+true positive rate = ture positive / (true positive + false negative)
+false positive rate = false positive / (false positive + true negative)
+
+area under curve
+```
