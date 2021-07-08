@@ -41,3 +41,11 @@ flops = 2 * channel_in * channel_out
 IoU = Intersection / Union
 GIoU = IoU - (MinAreaRect - Union) / MinAreaRect
 ```
+
+> * SSIM loss
+```
+S(x, y) = f(l(x,y), c(x,y), s(x,y)), x stands for prediction, y stands for ground truth.
+l stands for luminance, average pixel value.
+c stands for contrast, standard deviation.
+s stands for structure, (x - average pixel value) / standard deviation and compare similarity.
+```
