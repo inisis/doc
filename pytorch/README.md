@@ -48,4 +48,6 @@ S(x, y) = f(l(x,y), c(x,y), s(x,y)), x stands for prediction, y stands for groun
 l stands for luminance, average pixel value.
 c stands for contrast, standard deviation.
 s stands for structure, (x - average pixel value) / standard deviation and compare similarity.
+
+using sliding window to create different patches
 ```
