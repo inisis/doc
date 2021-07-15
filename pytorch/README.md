@@ -77,3 +77,14 @@ area under curve
 4. 1 * 1 conv to recover channel;
 5. se block to add weights to different channel.
 ```
+
+> * rpn
+```
+1. rpn takes the final convolution layer as input and is used to calculate the objectness scores and the relative offsets. 
+2. the dimension is k*2 and K*4
+```
+
+> * roi pooling
+```
+1. the dimension is K*num_channels*fixed_size*fixed_size, num_channels is the final conv layer channel
+```
