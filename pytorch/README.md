@@ -68,3 +68,12 @@ false positive rate = false positive / (false positive + true negative)
 
 area under curve
 ```
+
+> * res2net
+```
+1. 1x1 conv to reduce channel;
+2. split feature map by scale through channel dimension;
+3. y1 = x1; y2 = x2 * (3 x 3); y3 = (x3 + y2) * (3 x 3); y4 = (x4 + y3) * (3 x 3); the latter will get wider receptive field;
+4. 1 * 1 conv to recover channel;
+5. se block to add weights to different channel.
+```
