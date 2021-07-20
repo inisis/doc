@@ -76,3 +76,8 @@ docker inspect -f '{{ .Created }}' IMAGE_OR_CONTAINER
 vim /var/lib/docker/containers/<containerID>/config.v2.json
 sudo systemctl restart docker
 ```
+
+> * gpu
+```
+--gpus device=0,1 or --gpus all
+```
