@@ -160,3 +160,8 @@ dd if=/dev/zero of=/root/data/test.dbf bs=8k count=3000
 ```shell
 cat /etc/issue
 ```
+
+> * awk
+```shell
+awk -F, '{system("cp -sr "$1" train/"$2"")}' image.txt
+```
