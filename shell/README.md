@@ -165,3 +165,11 @@ cat /etc/issue
 ```shell
 awk -F, '{system("cp -sr "$1" train/"$2"")}' image.txt
 ```
+
+> *
+```
+for directories
+find /desired_location -type d -print0 | xargs -0 chmod 0755
+for files
+find /desired_location -type f -print0 | xargs -0 chmod 0644
+```
