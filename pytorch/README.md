@@ -88,3 +88,15 @@ area under curve
 ```
 1. the dimension is K*num_channels*fixed_size*fixed_size, num_channels is the final conv layer channel
 ```
+
+> * yolov5 best possible recall && anchors above threshold
+```
+thr is defined in hyp['anchor_t'], the default value is 4, k is the default anchors, wh is the gt bbox
+def metric(k):  # compute metric k shape (9,2) wh shape (N, 2)
+    r = wh[:, None] / k[None] # shape (N,9,2)
+    x = torch.min(r, 1. / r).min(2)[0]  # ratio metric shape (N,9)
+    best = x.max(1)[0]  # best_x select best matched anchor from the default anchors shape (N)
+    aat = (x > 1. / thr).float().sum(1).mean()  # anchors above threshold
+    bpr = (best > 1. / thr).float().mean()  # best possible recall
+    return bpr, aat
+```
