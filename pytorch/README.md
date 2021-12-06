@@ -100,3 +100,7 @@ def metric(k):  # compute metric k shape (9,2) wh shape (N, 2)
     bpr = (best > 1. / thr).float().mean()  # best possible recall
     return bpr, aat
 ```
+> * check if is module
+```
+isinstance(m, torch.nn.Module)
+```
