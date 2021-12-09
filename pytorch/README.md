@@ -104,3 +104,8 @@ def metric(k):  # compute metric k shape (9,2) wh shape (N, 2)
 ```
 isinstance(m, torch.nn.Module)
 ```
+
+> * lazy module
+```
+lazy module only needs to set output channel, the input channle is inferrd from input
+```
