@@ -109,3 +109,21 @@ isinstance(m, torch.nn.Module)
 ```
 lazy module only needs to set output channel, the input channle is inferrd from input
 ```
+
+> * pytorch to onnx with multi inputs
+```
+model = TwoInputModel()
+
+dummy_input_1 = torch.randn(10, 3, 224, 224)
+dummy_input_2 = torch.randn(10, 3, 100)
+
+# This is how we would call the PyTorch model
+example_output = model(dummy_input_1, dummy_input_2)
+
+# This is how to export it with multiple inputs
+torch.onnx.export(model,
+        args=(dummy_input_1, dummy_input_2),
+        f="alexnet.onnx",
+        input_names=["input_1", "input_2"],
+        output_names=["output1"])
+```
