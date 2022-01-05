@@ -173,3 +173,8 @@ find /desired_location -type d -print0 | xargs -0 chmod 0755
 for files
 find /desired_location -type f -print0 | xargs -0 chmod 0644
 ```
+
+> * awk
+```
+git rm $(awk -F: {'print$2'} <<< $(git status | grep deleted))
+```
