@@ -47,3 +47,8 @@ git remote update
 git diff master remotes/b/master -- path/to/repo
 git remote rm b
 ```
+
+> * git show Chinese character
+```
+git config --global core.quotepath false
+```
