@@ -9,4 +9,7 @@ wget https://github.com/Kitware/CMake/releases/download/v3.18.2/cmake-3.18.2-Li
 tar zxvf cmake-3.18.2-Linux-x86_64.tar.gz
 mv cmake-3.18.2-Linux-x86_64 /opt/cmake-3.18.2
 ln -sf /opt/cmake-3.18.2/bin/* /usr/bin/
+
+apt update
+apt-get install libzip-dev git -y
 ```
