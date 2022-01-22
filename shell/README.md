@@ -178,3 +178,8 @@ find /desired_location -type f -print0 | xargs -0 chmod 0644
 ```
 git rm $(awk -F: {'print$2'} <<< $(git status | grep deleted))
 ```
+
+> * sed
+```
+sed -i 's/kata1.*gz/'$(echo $WEIGHTS)'/g' /katago/config/conf.yaml
+```
