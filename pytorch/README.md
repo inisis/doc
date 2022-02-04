@@ -127,3 +127,20 @@ torch.onnx.export(model,
         input_names=["input_1", "input_2"],
         output_names=["output1"])
 ```
+
+
+> * shufflenet
+```
+def channel_shuffle(x: Tensor, groups: int) -> Tensor:
+    N, C, H, W = x.shape
+    
+    # reshape
+    x = x.view(N, groups, -1, H, W)
+
+    x = torch.transpose(x, 1, 2).contiguous()
+
+    # flatten
+    x = x.view(N, -1, H, W)
+
+    return x
+```
