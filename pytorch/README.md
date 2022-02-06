@@ -144,3 +144,9 @@ def channel_shuffle(x: Tensor, groups: int) -> Tensor:
 
     return x
 ```
+
+> * named_children vs named_modules
+```
+named_children() Returns an iterator over immediate children modules, yielding both the name of the module as well as the module itself.
+named_modules() Returns an iterator over all modules in the network, yielding both the name of the module as well as the module itself.
+```
