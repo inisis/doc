@@ -183,3 +183,9 @@ git rm $(awk -F: {'print$2'} <<< $(git status | grep deleted))
 ```
 sed -i 's/kata1.*gz/'$(echo $WEIGHTS)'/g' /katago/config/conf.yaml
 ```
+
+> * undo local commit
+```
+git reset --soft # if you want to keep your changes
+git reset --hard # if you don't care about keeping the changes you made
+```
