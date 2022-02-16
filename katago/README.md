@@ -27,3 +27,7 @@ make -j32
 cd ~/work/data/bins/katago-1.9.1/
 ./katago benchmark -config ../../configs/default_gtp.cfg  -model ../../weights/40b.bin.gz -v 5000 -t 32,48,64,80,96,112,128
 ```
+> * How to use certain kata-weight
+```
+--kata-weight
+```
