@@ -189,3 +189,8 @@ sed -i 's/kata1.*gz/'$(echo $WEIGHTS)'/g' /katago/config/conf.yaml
 git reset --soft # if you want to keep your changes
 git reset --hard # if you don't care about keeping the changes you made
 ```
+
+> * restore default bashrc
+```
+cp /etc/skel/.bashrc ~/
+```
