@@ -150,3 +150,19 @@ def channel_shuffle(x: Tensor, groups: int) -> Tensor:
 named_children() Returns an iterator over immediate children modules, yielding both the name of the module as well as the module itself.
 named_modules() Returns an iterator over all modules in the network, yielding both the name of the module as well as the module itself.
 ```
+> * replace bn
+```
+class FloatBN(nn.Module):
+    def __init__(self, running_mean, running_var, weight, bias, num_batches_tracked): 
+        super().__init__()
+        self.running_mean = nn.parameter.Parameter(running_mean, requires_grad=False ) 
+        self.running_var = nn.parameter.Parameter(running_var, requires_grad=False )
+        self.weight = weight
+        self.bias = bias
+        self.num_batches_tracked = nn.parameter.Parameter(num_batches_tracked, requires_grad=False)
+
+    def forward(self, x):
+        x = F.batch_norm(x, self.running_mean, self.running_var, self.weight, self.bias)
+
+        return x
+```
