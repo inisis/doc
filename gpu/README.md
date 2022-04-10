@@ -44,3 +44,13 @@ sudo fuser -v /dev/nvidia*
 ```shell
 nvidia-uninstall
 ```
+> * kill gnome-shell autorestart
+```
+(base) vipuser@ubuntu1804:~$ sudo lsof -n -w  /dev/nvidia*
+COMMAND     PID USER   FD   TYPE  DEVICE SIZE/OFF NODE NAME
+gnome-she 11861  gdm   12u   CHR 195,255      0t0  457 /dev/nvidiactl
+gnome-she 11861  gdm   13u   CHR   195,0      0t0  458 /dev/nvidia0
+gnome-she 11861  gdm   14u   CHR   195,0      0t0  458 /dev/nvidia0
+
+sudo service gdm stop
+```
