@@ -194,3 +194,8 @@ git reset --hard # if you don't care about keeping the changes you made
 ```
 cp /etc/skel/.bashrc ~/
 ```
+
+> * add user with home
+```
+useradd username
+```
