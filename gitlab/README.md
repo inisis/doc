@@ -52,3 +52,9 @@ git remote rm b
 ```
 git config --global core.quotepath false
 ```
+
+> * git tag and push remote
+```
+git tag TAGNAME master
+git push origin TAGNAME
+```
