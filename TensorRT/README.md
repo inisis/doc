@@ -5,5 +5,14 @@ polygraphy run ModifyEncoder.onnx --trt --onnxrt --verbose --workspace=24G --trt
 
 > * TensorRT hackthon wenet decoder
 ```
-polygraphy run decoder.onnx  --onnxrt --trt --workspace 24G --save-engine=decoder_p.plan --gen-script "./poly.py" --atol 1e-3 --rtol 1e-3 --verbose --trt-min-shapes encoder_out:[1,16,256] encoder_out_lens:[1] hyps_pad_sos_eos:[1,10,64] hyps_lens_sos:[1,10] ctc_score:[1,10] --trt-opt-shapes encoder_out:[64,16,256] encoder_out_lens:[64] hyps_pad_sos_eos:[64,10,64] hyps_lens_sos:[64,10] ctc_score:[64,10] --trt-max-shapes encoder_out:[64,256,256] encoder_out_lens:[64] hyps_pad_sos_eos:[64,10,64] hyps_lens_sos:[64,10] ctc_score:[64,10] --input-shapes encoder_out:[64,16,256] encoder_out_lens:[64] hyps_pad_sos_eos:[64,10,64] hyps_lens_sos:[64,10] ctc_score:[64,10]
+polygraphy run decoder.onnx --onnxrt --trt --workspace 24G --save-engine=/target/decoder.plan --data-loader-script data_loader.py --atol 1e-3 --rtol 1e-3 --verbose --trt-min-shapes encoder_out:[1,16,256] encoder_out_lens:[1] hyps_pad_sos_eos:[1,10,64] hyps_lens_sos:[1,10] ctc_score:[1,10] --trt-opt-shapes encoder_out:[64,16,256] encoder_out_lens:[64] hyps_pad_sos_eos:[64,10,64] hyps_lens_sos:[64,10] ctc_score:[64,10] --trt-max-shapes encoder_out:[64,256,256] encoder_out_lens:[64] hyps_pad_sos_eos:[64,10,64] hyps_lens_sos:[64,10] ctc_score:[64,10]
+```
+
+> * custom data_loader, data_loader.py
+```
+import numpy as np
+
+def load_data():
+    ioData = np.load('/workspace/data/decoder-1-256.npz')
+    return [ioData]
 ```
