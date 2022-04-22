@@ -54,3 +54,8 @@ gnome-she 11861  gdm   14u   CHR   195,0      0t0  458 /dev/nvidia0
 
 sudo service gdm stop
 ```
+
+> * check nvidia device
+```
+lspci | grep -i nvidia
+```
