@@ -166,3 +166,19 @@ class FloatBN(nn.Module):
 
         return x
 ```
+
+> * LayerNorm vs GroupNorm
+```
+import torch
+import torch.nn as nn
+
+channel = 3
+input = torch.randn(2, 2, 6, channel)
+ln = nn.LayerNorm(channel)
+
+b = input.reshape(-1, channel, 1, 1)
+m = nn.GroupNorm(1, channel)
+
+print(m(b).reshape(2, 2, 6, channel))
+print(ln(input))
+```
