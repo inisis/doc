@@ -58,3 +58,7 @@ git config --global core.quotepath false
 git tag TAGNAME master
 git push origin TAGNAME
 ```
+> * store username and password
+```
+git config --global credential.helper store
+```
