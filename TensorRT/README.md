@@ -16,3 +16,8 @@ def load_data():
     ioData = np.load('/workspace/data/decoder-1-256.npz')
     return [ioData]
 ```
+
+> * nsys profile python
+```
+nsys profile -w true -t cuda,nvtx,osrt,cudnn,cublas -s none -o nsight_report -f true -x true python /workspace/testEncoderAndDecoder.py
+```
