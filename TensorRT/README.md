@@ -21,3 +21,57 @@ def load_data():
 ```
 nsys profile -w true -t cuda,nvtx,osrt,cudnn,cublas -s none -o nsight_report -f true -x true python /workspace/testEncoderAndDecoder.py
 ```
+
+> * int8 calibrator
+```
+import os
+import numpy as np
+from cuda import cudart
+import tensorrt as trt
+
+class MyCalibrator(trt.IInt8EntropyCalibrator2):
+
+    def __init__(self, calibrationCount, inputShape, cacheFile):
+        trt.IInt8EntropyCalibrator2.__init__(self)
+        self.calibrationCount = calibrationCount
+        self.shape = inputShape
+        self.buffeSize = trt.volume(inputShape) * trt.float32.itemsize
+        self.cacheFile = cacheFile
+        _, self.dIn = cudart.cudaMalloc(self.buffeSize)
+        self.count = 0
+
+    def __del__(self):
+        cudart.cudaFree(self.dIn)
+
+    def get_batch_size(self):  # do NOT change name
+        return self.shape[0]
+
+    def get_batch(self, nameList=None, inputNodeName=None):  # do NOT change name
+        if self.count < self.calibrationCount:
+            self.count += 1
+            data = np.ascontiguousarray(np.random.rand(np.prod(self.shape)).astype(np.float32).reshape(*self.shape)*200-100)
+            cudart.cudaMemcpy(self.dIn, data.ctypes.data, self.buffeSize, cudart.cudaMemcpyKind.cudaMemcpyHostToDevice)
+            return [int(self.dIn)]
+        else:
+            return None
+
+    def read_calibration_cache(self):  # do NOT change name
+        if os.path.exists(self.cacheFile):
+            print("Succeed finding cahce file: %s" % (self.cacheFile))
+            with open(self.cacheFile, "rb") as f:
+                cache = f.read()
+                return cache
+        else:
+            print("Failed finding int8 cache!")
+            return
+
+    def write_calibration_cache(self, cache):  # do NOT change name
+        with open(self.cacheFile, "wb") as f:
+            f.write(cache)
+        print("Succeed saving int8 cache!")
+
+if __name__ == "__main__":
+    cudart.cudaDeviceSynchronize()
+    m = MyCalibrator(5, (1, 1, 28, 28), "./int8.cache")
+    m.get_batch("FakeNameList")
+```
