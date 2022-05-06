@@ -75,3 +75,8 @@ if __name__ == "__main__":
     m = MyCalibrator(5, (1, 1, 28, 28), "./int8.cache")
     m.get_batch("FakeNameList")
 ```
+
+> * supportsFormatCombination
+```
+return ((inOut[pos].type == nvinfer1::DataType::kHALF) && (inOut[pos].format == nvinfer1::PluginFormat::kLINEAR)); # fp16 and NCHW
+```
