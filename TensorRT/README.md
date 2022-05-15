@@ -80,3 +80,8 @@ if __name__ == "__main__":
 ```
 return ((inOut[pos].type == nvinfer1::DataType::kHALF) && (inOut[pos].format == nvinfer1::PluginFormat::kLINEAR)); # fp16 and NCHW
 ```
+
+> * save onnx output
+```
+polygraphy run /workspace/encoder.onnx --onnxrt --verbose --workspace=12G --trt-min-shapes speech:[1,16,80] speech_lengths:[1] --trt-opt-shapes speech:[4,256,80] speech_lengths:[4] --trt-max-shapes speech:[64,256,80] speech_lengths:[64] --input-shapes speech:[64,256,80] speech_lengths:[64] --save-engine encoder.plan --onnx-outputs 646 613 603 --save-outputs output.txt --seed 0
+```
