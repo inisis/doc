@@ -182,3 +182,8 @@ m = nn.GroupNorm(1, channel)
 print(m(b).reshape(2, 2, 6, channel))
 print(ln(input))
 ```
+
+> * tensor dtype
+```
+tensor.type()
+```
