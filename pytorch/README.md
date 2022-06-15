@@ -149,6 +149,25 @@ def channel_shuffle(x: Tensor, groups: int) -> Tensor:
 ```
 named_children() Returns an iterator over immediate children modules, yielding both the name of the module as well as the module itself.
 named_modules() Returns an iterator over all modules in the network, yielding both the name of the module as well as the module itself.
+
+modules in model should not be identical, or identical module will only show once
+
+import torch.nn as nn
+
+activation = nn.ReLU()
+
+def model(act=activation):
+    backbone = []
+    for i in range(3):
+        backbone.append(activation) # activation # nn.ReLU()
+
+    return nn.Sequential(*backbone)
+    
+
+model = model()
+for name, module in model.named_modules():
+    print(name, module) # 0 ReLU() # 0 ReLU() 1 ReLU() 2 ReLU()
+
 ```
 > * replace bn
 ```
