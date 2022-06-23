@@ -206,3 +206,31 @@ print(ln(input))
 ```
 tensor.type()
 ```
+
+> * scipy entropy in numpy
+```
+import numpy as np
+from scipy.stats import entropy
+
+p = np.array([1e-4,1e-4,1e-4,1e-4,1e-4,1])
+q = np.array([1e-4,1e-4,1e-4,1e-4,1e-4,1e-4])
+print("Scipy: ",entropy(p, q))
+
+def KL(a, b):
+    a = 1.0*a / np.sum(a, axis=0)
+    b = 1.0*b / np.sum(b, axis=0)
+    return np.sum(np.where(a != 0, a * np.log(a / b), 0))
+
+print("KL: ", KL(p, q))
+
+def entropy_numpy(a):
+    a = 1.0*a / np.sum(a, axis=0)
+    sum_ = 0
+    for each in a:
+        sum_ -= each * np.log(each) / np.log(e)
+    return sum_
+
+print("single: ", entropy(p))
+print("numpy: ", entropy_numpy(p))
+
+```
