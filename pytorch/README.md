@@ -232,5 +232,10 @@ def entropy_numpy(a):
 
 print("single: ", entropy(p))
 print("numpy: ", entropy_numpy(p))
+```
 
+> * torch.allclose
+```
+torch.allclose(input, other, rtol=1e-05, atol=1e-08, equal_nan=False)
+∣input−other∣≤atol+rtol×∣other∣
 ```
