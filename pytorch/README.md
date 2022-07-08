@@ -239,3 +239,17 @@ print("numpy: ", entropy_numpy(p))
 torch.allclose(input, other, rtol=1e-05, atol=1e-08, equal_nan=False)
 ∣input−other∣≤atol+rtol×∣other∣
 ```
+
+> * calculate flops and params
+```
+import torch
+import torchvision
+from thop import profile
+
+model = torchvision.models.resnet50(pretrained=False)
+
+input = torch.randn(1, 3, 224, 224)
+flops, params = profile(model, (input,))
+
+print("flops: {:.2f} M, params: {:.2f} M".format(flops / 1e6,  params / (1024*1024)))
+```
