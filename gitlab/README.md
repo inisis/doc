@@ -70,3 +70,7 @@ git config user.name
 git config user.email
 ```
 
+> git add with Chinese Character
+```
+git add $(awk -F： {'print$2'} <<< $(git status | grep '修改'))
+```
