@@ -74,3 +74,8 @@ git config user.email
 ```
 git add $(awk -F： {'print$2'} <<< $(git status | grep '修改'))
 ```
+
+> * git submodule
+```
+git submodule update --init --recursive
+```
