@@ -253,3 +253,20 @@ flops, params = profile(model, (input,))
 
 print("flops: {:.2f} M, params: {:.2f} M".format(flops / 1e6,  params / (1024*1024)))
 ```
+
+>* torch fx trace custom function (custom modules cannot be wrapped)
+```
+import torch
+import torch.fx
+
+@torch.fx.wrap
+def my_custom_function(x, y):
+    return x * x + y * y
+
+def fn_to_be_traced(x, y):
+    # When symbolic tracing, the below call to my_custom_function will be inserted into
+    # the graph rather than tracing it.
+    return my_custom_function(x, y)
+
+f = torch.fx.symbolic_trace(fn_to_be_traced) 
+```
