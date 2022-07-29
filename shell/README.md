@@ -197,5 +197,5 @@ cp /etc/skel/.bashrc ~/
 
 > * add user with home
 ```
-useradd username
+useradd -m -s /bin/bash yao
 ```
