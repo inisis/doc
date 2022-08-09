@@ -199,3 +199,8 @@ cp /etc/skel/.bashrc ~/
 ```
 useradd -m -s /bin/bash yao
 ```
+
+> * centos add user to sudoer
+```
+sudo usermod -aG wheel test-user
+```
