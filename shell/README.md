@@ -204,3 +204,8 @@ useradd -m -s /bin/bash yao
 ```
 sudo usermod -aG wheel test-user
 ```
+
+> * shell for loop
+```
+for i in {1..100}; do echo $i; done
+```
