@@ -209,3 +209,8 @@ sudo usermod -aG wheel test-user
 ```
 for i in {1..100}; do echo $i; done
 ```
+
+> * remove deleted
+```
+git rm $(git status | grep deleted | awk '{print $3}')
+```
