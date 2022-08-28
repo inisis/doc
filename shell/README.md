@@ -214,3 +214,8 @@ for i in {1..100}; do echo $i; done
 ```
 git rm $(git status | grep deleted | awk '{print $3}')
 ```
+
+> * change display name on terminal
+```
+export PS1="Hello.Master$ "
+```
