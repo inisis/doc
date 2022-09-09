@@ -12,3 +12,7 @@ kernprof -l -v felson/bin/json2txt.py /nas/csv/Q4_5751_2019.10.18.csv ./
 ```shell
 sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
 ```
+> * get python version
+```
+PYVER=$(python -c "import sys; print('python{}.{}'.format(*sys.version_info))")
+```
