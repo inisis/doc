@@ -79,3 +79,9 @@ git add $(awk -F： {'print$2'} <<< $(git status | grep '修改'))
 ```
 git submodule update --init --recursive
 ```
+
+> * git stash(How to keep your local changes and switch to another branch in Git)
+```
+git stash
+git stash apply or git stash pop
+```
