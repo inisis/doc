@@ -81,3 +81,8 @@ sudo systemctl restart docker
 ```
 --gpus device=0,1 or --gpus all
 ```
+
+> * docker rm using regex
+```
+docker ps -aqn 10 -f name=stable* | xargs docker rm -f
+```
