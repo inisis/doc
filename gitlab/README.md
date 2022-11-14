@@ -85,3 +85,8 @@ git submodule update --init --recursive
 git stash
 git stash apply or git stash pop
 ```
+
+> * git 中文乱码
+```
+export LESSCHARSET=utf-8
+```
