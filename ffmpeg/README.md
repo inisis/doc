@@ -13,3 +13,13 @@ for i in *.jpg; do
   let a=a+1;
 done
 ```
+
+> * mp4 to jpg
+```
+ffmpeg -i hq.mp4 input/%04d.png
+```
+
+> * jpgs to mp4
+```
+ffmpeg -framerate 30 -i stable-diffusion-webui/models/Stable-diffusion/input/%04d.png -c:v libx264 -r 30 -pix_fmt yuv420p output.mp4
+```
