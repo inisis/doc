@@ -41,3 +41,8 @@ onnx.save(model, './encder_sim.onnx')
   512     // Future extensions go here.
   513   }
 ```
+
+> * onnx runtime extension
+```
+pip install onnxruntime-extensions
+```
