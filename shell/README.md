@@ -219,3 +219,8 @@ git rm $(git status | grep deleted | awk '{print $3}')
 ```
 export PS1="Hello.Master$ "
 ```
+
+> * delete all zero size file
+```
+find . -name "*" -type f -size 0c | xargs -n 1 rm -f
+```
