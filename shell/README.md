@@ -224,3 +224,8 @@ export PS1="Hello.Master$ "
 ```
 find . -name "*" -type f -size 0c | xargs -n 1 rm -f
 ```
+
+> * download without restart
+```
+wget -c 
+```
