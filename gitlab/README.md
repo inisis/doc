@@ -90,3 +90,8 @@ git stash apply or git stash pop
 ```
 export LESSCHARSET=utf-8
 ```
+
+> * gen ssh keys
+```
+ssh-keygen -t rsa -b 4096
+```
