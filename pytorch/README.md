@@ -284,3 +284,8 @@ wget https://ipfs.io/ipfs/Qmb9y5GCkTG7ZzbBWMu2BXwMkzyCKcUjtEKPpgdZ7GEFKm/65B/con
 wget https://ipfs.io/ipfs/Qmb9y5GCkTG7ZzbBWMu2BXwMkzyCKcUjtEKPpgdZ7GEFKm/65B/checklist.chk
 wget https://ipfs.io/ipfs/Qmb9y5GCkTG7ZzbBWMu2BXwMkzyCKcUjtEKPpgdZ7GEFKm/65B/params.json
 ```
+
+> * A100 ddp hang
+```
+export NCCL_P2P_DISABLE=1
+```
