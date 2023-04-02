@@ -289,3 +289,9 @@ wget https://ipfs.io/ipfs/Qmb9y5GCkTG7ZzbBWMu2BXwMkzyCKcUjtEKPpgdZ7GEFKm/65B/par
 ```
 export NCCL_P2P_DISABLE=1
 ```
+
+> * torch reshape vs view
+```
+torch reshape will copy tensor
+torch view will not, so call contiguous before view
+```
