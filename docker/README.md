@@ -86,3 +86,8 @@ sudo systemctl restart docker
 ```
 docker ps -aqn 10 -f name=stable* | xargs docker rm -f
 ```
+
+> * docker save with gzip
+```
+docker save myimage:latest | gzip > myimage_latest.tar.gz
+```
