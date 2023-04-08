@@ -36,3 +36,8 @@ cd ~/work/data/bins/katago-1.9.1/
 ```
 --kata-weight
 ```
+
+> * docker run
+```
+docker run -it --name=KATAGO --gpus all -v /mnt/weights:/katago/data/weights -e USER_NAME=desmond -e USER_PASSWORD=12345678 -e BACKEND=TENSORRT -e WEIGHTS=kata1-b60c320-s7010139136-d3130207575.bin.gz -e NUMSEARCHTHREADS=32 -e LD_LIBRARY_PATH=/usr/local/cuda/lib64 --entrypoint /etc/entrypoint.sh katago:11.8-cudnn8-runtime-ubuntu18.04-tenosrrt8.6-nopencl-stable
+```
