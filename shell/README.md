@@ -229,3 +229,8 @@ find . -name "*" -type f -size 0c | xargs -n 1 rm -f
 ```
 wget -c 
 ```
+
+> * ssh with rsa
+```
+ssh -i rsa_file
+```
