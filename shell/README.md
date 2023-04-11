@@ -234,3 +234,8 @@ wget -c
 ```
 ssh -i rsa_file
 ```
+
+> * sshgen keys
+```
+sshgen keys
+```
