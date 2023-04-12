@@ -16,3 +16,7 @@ sudo update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.5 1
 ```
 PYVER=$(python -c "import sys; print('python{}.{}'.format(*sys.version_info))")
 ```
+> * conda remove env
+```
+conda remove --name base --all
+```
