@@ -20,3 +20,7 @@ PYVER=$(python -c "import sys; print('python{}.{}'.format(*sys.version_info))")
 ```
 conda remove --name base --all
 ```
+> * conda install cudatoolkit && cudnn
+```
+conda install -c anaconda cudatoolkit=10.0 cudnn
+```
