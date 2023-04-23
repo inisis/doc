@@ -239,3 +239,8 @@ ssh -i rsa_file
 ```
 sshgen keys
 ```
+
+> * disable centos new mail
+```
+echo "unset MAILCHECK" >> ~/.bashrc
+```
