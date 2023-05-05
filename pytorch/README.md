@@ -295,3 +295,11 @@ export NCCL_P2P_DISABLE=1
 torch reshape will copy tensor
 torch view will not, so call contiguous before view
 ```
+
+> * torch round
+```
+torch.trunc(), which rounds towards zero, which euals to x.to(torch.int32)
+torch.floor(), which rounds down.
+torch.ceil(), which rounds up.
+torch.round(), this function implements the “round half to even” to break ties when a number is equidistant from two integers (e.g. round(2.5) is 2).
+```
