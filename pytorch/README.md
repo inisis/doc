@@ -303,3 +303,14 @@ torch.floor(), which rounds down.
 torch.ceil(), which rounds up.
 torch.round(), this function implements the “round half to even” to break ties when a number is equidistant from two integers (e.g. round(2.5) is 2).
 ```
+
+> * torch freeze model
+```
+for name, param in model.named_parameters():
+    if not "observer" in name:
+        param.requires_grad = False
+
+optimizer = torch.optim.SGD(filter(lambda p: p.requires_grad, model.parameters()),
+                            lr=0.01, momentum=0.9, weight_decay=0.0001
+)
+```
