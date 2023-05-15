@@ -91,3 +91,9 @@ docker ps -aqn 10 -f name=stable* | xargs docker rm -f
 ```
 docker save myimage:latest | gzip > myimage_latest.tar.gz
 ```
+
+> * Why is nvidia-smi inside the container not listing the running processes?
+```
+nvidia-smi and NVML are not compatible with PID namespaces.
+We recommend monitoring your processes on the host or inside a container using --pid=host.
+```
