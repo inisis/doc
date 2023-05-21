@@ -244,3 +244,8 @@ sshgen keys
 ```
 echo "unset MAILCHECK" >> ~/.bashrc
 ```
+
+> * apt update failed
+```
+chmod 1777 /tmp
+```
