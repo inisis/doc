@@ -249,3 +249,8 @@ echo "unset MAILCHECK" >> ~/.bashrc
 ```
 chmod 1777 /tmp
 ```
+
+> * replace np.float with np.float32
+```
+find . -type f -exec sed -i 's/\bnp.float\b/np.float32/g' {} +
+```
