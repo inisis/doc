@@ -254,3 +254,8 @@ chmod 1777 /tmp
 ```
 find . -type f -exec sed -i 's/\bnp.float\b/np.float32/g' {} +
 ```
+
+> * change bash prompt 
+```
+export PS1="\u:"
+```
