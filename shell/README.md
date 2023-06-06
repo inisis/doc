@@ -259,3 +259,8 @@ find . -type f -exec sed -i 's/\bnp.float\b/np.float32/g' {} +
 ```
 export PS1="\u:"
 ```
+
+> * rsync without overwrite existing
+```
+rsync -avz --ignore-existing -e "ssh -p 2232" SRC/ user@remote.host:/DEST/ 
+```
