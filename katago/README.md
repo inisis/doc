@@ -41,3 +41,30 @@ cd ~/work/data/bins/katago-1.9.1/
 ```
 docker run -it --name=KATAGO --gpus all -v /mnt/weights:/katago/data/weights -e USER_NAME=desmond -e USER_PASSWORD=12345678 -e BACKEND=TENSORRT -e WEIGHTS=kata1-b60c320-s7010139136-d3130207575.bin.gz -e NUMSEARCHTHREADS=32 -e LD_LIBRARY_PATH=/usr/local/cuda/lib64 --entrypoint /etc/entrypoint.sh katago:11.8-cudnn8-runtime-ubuntu18.04-tenosrrt8.6-nopencl-stable
 ```
+
+> * gen trt cache for different GPUs
+```
+weights=$(find /katago/data/weights -type f)
+GPU_NAME=$(nvidia-smi -q | grep "Product Name" | head -n 1 | cut -d":" -f2 | xargs)
+echo $GPU_NAME
+
+if [[ "$GPU_NAME" == *"GeForce RTX 3090"* ]]
+then
+        base=96
+elif [[ "$GPU_NAME" == *"NVIDIA A100-PCIE-40GB"* ]]
+then
+        base=80
+else
+        echo unsuported gpu card: $GPU_NAME
+        exit -1
+fi
+
+for weight in ${weights};
+do
+    for i in 1 2 4 8;
+        do
+            echo /usr/bin/katago_trt benchmark -config /configs/$i/default_gtp.cfg  -model $weight -v 5000 -t $((i * base))
+            /usr/bin/katago_trt benchmark -config /configs/$i/default_gtp.cfg  -model $weight -v 5000 -t $((i * base))
+        done
+done
+```
