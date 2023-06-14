@@ -264,3 +264,8 @@ export PS1="\u:"
 ```
 rsync -avz --ignore-existing -e "ssh -p 2232" SRC/ user@remote.host:/DEST/ 
 ```
+
+> * pkill by name
+```
+pkill -9 -f my_pattern
+```
