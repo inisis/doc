@@ -71,3 +71,10 @@ export LD_LIBRARY_PATH=${CUDA_HOME}/lib64:$LD_LIBRARY_PATH
 ```
 export CUDA_DEVICE_ORDER=PCI_BUS_ID
 ```
+
+> * A100 Nvlink
+```
+sudo apt-get install cuda-drivers-fabricmanager-525
+sudo nvidia-smi -pm 1
+sudo nvidia-smi -mig 0
+```
