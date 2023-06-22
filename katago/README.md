@@ -48,7 +48,7 @@ weights=$(find /katago/data/weights -type f)
 GPU_NAME=$(nvidia-smi -q | grep "Product Name" | head -n 1 | cut -d":" -f2 | xargs)
 echo $GPU_NAME
 
-if [[ "$GPU_NAME" == *"GeForce RTX 3090"* ]]
+if [[ "$GPU_NAME" == *"NVIDIA GeForce RTX 3090"* ]]
 then
         base=96
 elif [[ "$GPU_NAME" == *"NVIDIA A100-PCIE-40GB"* ]]
