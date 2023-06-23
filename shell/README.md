@@ -269,3 +269,8 @@ rsync -avz --ignore-existing -e "ssh -p 2232" SRC/ user@remote.host:/DEST/
 ```
 pkill -9 -f my_pattern
 ```
+
+> * dynamic add disk space
+```
+resize2fs /dev/vda1
+```
