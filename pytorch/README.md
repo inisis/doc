@@ -314,3 +314,8 @@ optimizer = torch.optim.SGD(filter(lambda p: p.requires_grad, model.parameters()
                             lr=0.01, momentum=0.9, weight_decay=0.0001
 )
 ```
+
+> * mpi run ddp
+```
+mpirun -np 4 -H 192.168.0.254:2,192.168.0.253:2 -x MASTER_ADDR=192.168.0.254 -x MASTER_PORT=1234 -x PATH -bind-to none -map-by slot -mca pml ob1 -mca btl ^openib python3 main.py --backend=nccl
+```
