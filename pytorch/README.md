@@ -319,3 +319,14 @@ optimizer = torch.optim.SGD(filter(lambda p: p.requires_grad, model.parameters()
 ```
 mpirun -np 4 -H 192.168.0.254:2,192.168.0.253:2 -x MASTER_ADDR=192.168.0.254 -x MASTER_PORT=1234 -x PATH -bind-to none -map-by slot -mca pml ob1 -mca btl ^openib python3 main.py --backend=nccl
 ```
+
+> * nccl rdma setting
+```
+NCCL_IB_HCA=mlx5_1:1,mlx5_2:1,mlx5_3:1,mlx5_4:1
+NCCL_IB_DISABLE=0
+NCCL_SOCKET_IFNAME=eth0
+NCCL_IB_GID_INDEX=3
+NCCL_NET_GDR_LEVEL=1
+NCCL_IB_TIMEOUT=23
+NCCL_IB_RETRY_CNT=7
+```
