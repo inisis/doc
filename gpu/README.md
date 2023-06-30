@@ -78,3 +78,10 @@ sudo apt-get install cuda-drivers-fabricmanager-525
 sudo nvidia-smi -pm 1
 sudo nvidia-smi -mig 0
 ```
+
+> * nsys-ui in docker
+```
+sudo apt-get install libxcb-xinerama0
+sudo apt-get install libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xfixes0 libegl1-mesa
+sudo apt install openjdk-8-jre
+```
