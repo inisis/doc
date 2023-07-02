@@ -331,7 +331,7 @@ NCCL_IB_TIMEOUT=23
 NCCL_IB_RETRY_CNT=7
 ```
 
-> * grpc server c++ link
+> * grpc server c++ link lib
 ```
 
 ```
