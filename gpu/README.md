@@ -77,6 +77,7 @@ export CUDA_DEVICE_ORDER=PCI_BUS_ID
 sudo apt-get install cuda-drivers-fabricmanager-525
 sudo nvidia-smi -pm 1
 sudo nvidia-smi -mig 0
+sudo systemctl status nvidia-fabricmanager
 ```
 
 > * nsys-ui in docker
