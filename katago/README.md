@@ -68,3 +68,11 @@ do
         done
 done
 ```
+
+> * centos7 install gcc 7
+```
+yum install centos-release-scl
+yum install devtoolset-7-gcc-c++
+
+scl enable devtoolset-7 bash
+```
