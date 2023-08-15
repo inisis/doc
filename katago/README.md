@@ -76,3 +76,10 @@ yum install devtoolset-7-gcc-c++
 
 scl enable devtoolset-7 bash
 ```
+
+> *
+```
+FROM base
+ENV LD_LIBRARY_PATH=/usr/local/cuda/lib64/
+ENTRYPOINT ["/etc/entrypoint.sh"]
+```
