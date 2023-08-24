@@ -9,6 +9,9 @@ docker ps -a --no-trunc
 3.to speed up docker pull, use alibaba to accelerate it. https://cr.console.aliyun.com/cn-hangzhou/instances/mirrors
 4.sudo systemctl restart docker if gpu cannot be used.
 ```
+```
+curl -fsSL https://get.docker.com/ | sh
+```
 > * user add group
 ```docker
 usermod -a -G docker ubuntu
