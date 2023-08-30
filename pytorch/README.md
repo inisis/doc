@@ -331,6 +331,11 @@ NCCL_IB_TIMEOUT=23
 NCCL_IB_RETRY_CNT=7
 ```
 
+> * instancenorm vs groupnorm vs layernorm
+```
+
+```
+
 > * grpc server c++ link lib
 ```
 
