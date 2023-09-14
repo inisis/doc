@@ -106,3 +106,8 @@ We recommend monitoring your processes on the host or inside a container using -
 curl -X GET http://192.168.0.18:13508/v2/_catalog
 curl -X GET http://192.168.0.18:13508/v2/katago/tags/list
 ```
+
+> *
+```
+
+```
