@@ -89,5 +89,6 @@ sudo apt install openjdk-8-jre
 
 > A100-40GB set clock
 ```
+sudo nvidia-smi -q -d SUPPORTED_CLOCKS
 sudo nvidia-smi -pm 1 && sudo nvidia-smi -ac 1215,1410
 ```
