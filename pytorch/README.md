@@ -346,3 +346,8 @@ NCCL_IB_RETRY_CNT=7
 ```
 ToTensor will normalize but PILToTensor won't
 ```
+
+> * instancenorm vs groupnorm vs layernorm
+```
+
+```
