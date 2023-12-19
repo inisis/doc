@@ -12,3 +12,8 @@ python3 -m twine upload --repository pypi dist/*
 ```
 python setup.py sdist
 ```
+
+> * pypi org
+```
+-i https://pypi.org/simple
+```
