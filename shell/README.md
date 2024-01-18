@@ -279,3 +279,8 @@ resize2fs /dev/vda1
 ```
 python3 -m torch.distributed.launch --nproc_per_node=2 --nnodes=2 --node_rank=1 --master_addr=198.18.28.14 --master_port=1234 main.py --backend=nccl --use_syn --batch_size=8192 --arch=resnet152
 ```
+
+> *  show all the arguments of a running Linux process
+```
+ps auxww | grep <process_name_or_pid>
+```
