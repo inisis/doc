@@ -284,3 +284,8 @@ python3 -m torch.distributed.launch --nproc_per_node=2 --nnodes=2 --node_rank=1 
 ```
 ps auxww | grep <process_name_or_pid>
 ```
+
+> * get folder size and sort
+```
+du -h --max-depth=1 | sort -h
+```
