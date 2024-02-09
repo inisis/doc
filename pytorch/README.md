@@ -349,5 +349,5 @@ ToTensor will normalize but PILToTensor won't
 
 > * pytorch qdq
 ```
-
+use graphsurgeon instead to optimize it
 ```
