@@ -336,7 +336,6 @@ NCCL_IB_RETRY_CNT=7
 
 ```
 
-
 > * instancenorm vs groupnorm vs layernorm
 ```
 
