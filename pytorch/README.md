@@ -340,7 +340,6 @@ NCCL_IB_RETRY_CNT=7
 ```
 
 ```
-
 > * transform ToTensor vs PILToTensor
 ```
 ToTensor will normalize but PILToTensor won't
