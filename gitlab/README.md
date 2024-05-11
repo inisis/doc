@@ -145,3 +145,8 @@ plt.savefig('commit_activity_plot.png')
 # Display the plot
 plt.show()
 ```
+
+> * git ignore file mode change
+```
+git config core.fileMode false
+```
