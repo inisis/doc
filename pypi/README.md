@@ -17,3 +17,8 @@ python setup.py sdist
 ```
 -i https://pypi.org/simple
 ```
+
+> * pip uninstall many
+```
+pip uninstall `pip freeze | grep torch`
+```
