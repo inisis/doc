@@ -289,3 +289,9 @@ ps auxww | grep <process_name_or_pid>
 ```
 du -h --max-depth=1 | sort -h
 ```
+
+> * screen
+```
+screen -S name
+screen -r name
+```
