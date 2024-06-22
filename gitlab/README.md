@@ -150,3 +150,9 @@ plt.show()
 ```
 git config core.fileMode false
 ```
+
+> * git rebase
+```
+git fetch origin
+git rebase origin/main
+```
