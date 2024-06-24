@@ -156,3 +156,8 @@ git config core.fileMode false
 git fetch origin
 git rebase origin/main
 ```
+
+> * git patch
+```
+git apply --check a.patch
+```
