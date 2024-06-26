@@ -353,7 +353,7 @@ use graphsurgeon instead to optimize it
 
 > * torch.nn.apply
 ```
-
+multi thread
 ```
 
 > * triton
