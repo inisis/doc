@@ -161,3 +161,8 @@ git rebase origin/main
 ```
 git apply --check a.patch
 ```
+
+> * git ignore ^M
+```
+git config --global core.autocrlf true
+```
