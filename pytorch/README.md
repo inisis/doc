@@ -356,7 +356,7 @@ use graphsurgeon instead to optimize it
 multi thread
 ```
 
-> * triton
+> * triton kernel
 ```
 
 ```
