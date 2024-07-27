@@ -364,5 +364,5 @@ multi dimension grid
 
 > * llm evaluation
 ```
-lmeval LongBench LEval
+lmeval LongBench LEval ppl
 ```
