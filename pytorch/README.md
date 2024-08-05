@@ -366,3 +366,8 @@ multi dimension grid
 ```
 lmeval LongBench LEval ppl
 ```
+
+> * flash attention
+```
+backward non deterministic
+```
