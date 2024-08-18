@@ -170,4 +170,7 @@ git config --global core.autocrlf true
 > * git clone main only
 ```
 git remote add upstream https://github.com/original-owner/original-repo.git
+git fetch upstream
+git checkout -b branch-name upstream/branch-name
+git push origin branch-name
 ```
