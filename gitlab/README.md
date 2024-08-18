@@ -166,3 +166,8 @@ git apply --check a.patch
 ```
 git config --global core.autocrlf true
 ```
+
+> * git clone main only
+```
+git remote add upstream https://github.com/original-owner/original-repo.git
+```
