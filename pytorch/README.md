@@ -371,3 +371,9 @@ lmeval LongBench LEval ppl
 ```
 backward non deterministic
 ```
+
+> * backward hook
+```
+register_backward_hook vs register_full_backward_hook
+use register_full_backward_hook instead of register_backward_hook
+```
