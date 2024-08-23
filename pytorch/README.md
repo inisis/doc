@@ -372,9 +372,9 @@ lmeval LongBench LEval ppl
 backward non deterministic
 ```
 
-> *
+> * pytorch install with mirror
 ```
-
+pip install torch==2.0.0+cu118 torchvision==0.15.1+cu118 torchaudio==2.0.1+cu118 -f https://mirror.sjtu.edu.cn/pytorch-wheels/torch_stable.html
 ```
 
 > * backward hook
