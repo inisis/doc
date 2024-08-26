@@ -22,3 +22,8 @@ python setup.py sdist
 ```
 pip uninstall `pip freeze | grep torch`
 ```
+
+> * pip install
+```
+pip install torch===1.7.1+cu118 torchvision===0.8.2+cu118 torchaudio===0.7.2+cu118 -f https://mirror.sjtu.edu.cn/pytorch-wheels
+```
