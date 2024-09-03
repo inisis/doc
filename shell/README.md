@@ -295,3 +295,8 @@ du -h --max-depth=1 | sort -h
 screen -S name
 screen -r name
 ```
+
+> * get last arguments
+```
+alt + . or $_
+```
