@@ -387,3 +387,8 @@ use register_full_backward_hook instead of register_backward_hook
 ```
 rotational position mebedding
 ```
+
+> * hook torch.autograd.function
+```
+
+```
