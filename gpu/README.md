@@ -1,4 +1,4 @@
-> * show gpu vendor
+![image](https://github.com/user-attachments/assets/b735e902-cdad-4cc6-ae45-21442c4705d7)> * show gpu vendor
 ```shell
 lspci -vnn | grep VGA -A 12
 ```
@@ -74,11 +74,13 @@ export CUDA_DEVICE_ORDER=PCI_BUS_ID
 
 > * A100 Nvlink
 ```
-sudo apt-get install cuda-drivers-fabricmanager-525
+sudo apt install nvidia-driver-535-server
+sudo apt install cuda-drivers-fabricmanager-535
 sudo service nvidia-fabricmanager restart
 sudo nvidia-smi -pm 1
 sudo nvidia-smi -mig 0
 sudo systemctl status nvidia-fabricmanager
+sudo nvidia-smi topo -m
 ```
 
 > * nsys-ui in docker
