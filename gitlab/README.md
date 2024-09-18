@@ -174,3 +174,8 @@ git fetch upstream
 git checkout -b branch-name upstream/branch-name
 git push origin branch-name
 ```
+
+> * git checkout certain commit
+```
+git checkout HEAD -- file
+```
