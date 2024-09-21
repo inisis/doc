@@ -390,5 +390,5 @@ rotational position mebedding
 
 > * hook torch.autograd.function
 ```
-
+won't work, because it's stateless
 ```
