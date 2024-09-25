@@ -300,3 +300,26 @@ screen -r name
 ```
 alt + . or $_
 ```
+
+> * get process up time
+```
+#!/bin/bash
+  
+# Get the PID (process ID). Use $$ for the current shell process, or replace it with another PID.
+PID=$1
+
+# Get the process start time in seconds since epoch
+start_time=$(ps -o lstart= -p "$PID" | date -d "$(cat)" +%s)
+
+# Get the current time in seconds since epoch
+current_time=$(date +%s)
+
+# Calculate uptime
+uptime=$((current_time - start_time))
+
+# Convert uptime to minutes (optional)
+uptime_minutes=$((uptime / 60))
+
+# Print uptime
+echo "Process uptime: $uptime seconds ($uptime_minutes minutes)"
+```
