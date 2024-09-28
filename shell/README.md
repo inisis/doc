@@ -323,3 +323,8 @@ uptime_minutes=$((uptime / 60))
 # Print uptime
 echo "Process uptime: $uptime seconds ($uptime_minutes minutes)"
 ```
+
+> * clear screen
+```
+ctrl + L
+```
