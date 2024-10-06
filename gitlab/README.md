@@ -180,7 +180,7 @@ git push origin branch-name
 git checkout HEAD -- file
 ```
 
-> * 
+> * self host runner
 ```
 
 ```
