@@ -333,3 +333,8 @@ ctrl + L
 ```
 
 ```
+
+> * rsync exclude
+```
+rsync -av --exclude='chip*/agent/data/' source/ destination/
+```
