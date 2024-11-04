@@ -338,3 +338,8 @@ ctrl + L
 ```
 rsync -av --exclude='chip*/agent/data/' source/ destination/
 ```
+
+> * cat with index
+```
+cat -n
+```
