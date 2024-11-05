@@ -343,3 +343,8 @@ rsync -av --exclude='chip*/agent/data/' source/ destination/
 ```
 cat -n
 ```
+
+> * sort
+```
+sort -n
+```
