@@ -25,4 +25,15 @@ conda remove --name base --all
 conda install -c anaconda cudatoolkit=10.0 cudnn
 ```
 
-> *
+> * change builtin print
+```
+import builtins
+from inspect import getframeinfo, stack
+original_print = print
+
+def print_wrap(*args, **kwargs):
+    caller = getframeinfo(stack()[1][0])
+    original_print("FN:",caller.filename,"Line:", caller.lineno,"Func:", caller.function,":::", *args, **kwargs)
+
+builtins.print = print_wrap
+``
