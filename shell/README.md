@@ -353,3 +353,8 @@ sort -n
 ```
 
 ```
+
+> * vim copy many times
+```
+yy100p
+```
