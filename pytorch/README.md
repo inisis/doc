@@ -393,7 +393,13 @@ rotational position mebedding
 won't work, because it's stateless
 ```
 
-> *
+> * register symbolic
 ```
+from torch.onnx import register_custom_op_symbolic
+def max_pool2d_with_custom_domain(g, input, kernel_size, stride, padding, dilation, ceil_mode):
+    node = torch.onnx.symbolic_opset9.max_pool2d(g, input, kernel_size, stride, padding, dilation, ceil_mode)
+    return node
 
+# Register the custom symbolic function
+register_custom_op_symbolic("aten::max_pool2d", max_pool2d_with_custom_domain, 12)    
 ```
