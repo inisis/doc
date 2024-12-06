@@ -403,3 +403,8 @@ def max_pool2d_with_custom_domain(g, input, kernel_size, stride, padding, dilati
 # Register the custom symbolic function
 register_custom_op_symbolic("aten::max_pool2d", max_pool2d_with_custom_domain, 12)    
 ```
+
+> * symbolic with custom shape
+```
+
+```
