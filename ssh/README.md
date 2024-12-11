@@ -10,3 +10,9 @@ socks5 127.0.0.1 1080
 ```
 sshfs mount folder
 ```
+
+> * remote ssh
+```
+ssh-keygen
+ssh-copy-id name@host
+```
