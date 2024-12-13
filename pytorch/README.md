@@ -406,5 +406,5 @@ register_custom_op_symbolic("aten::max_pool2d", max_pool2d_with_custom_domain, 1
 
 > * symbolic with custom shape
 ```
-
+graph.op(op_type, *inputs, **onnx_attrs).setType(inputs[0].type().with_dtype(dtype).with_sizes(output_shape))
 ```
