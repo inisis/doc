@@ -358,3 +358,8 @@ sort -n
 ```
 yy100p
 ```
+
+> * cal size and sort
+```
+du -hd 1 . | sort -hr
+```
