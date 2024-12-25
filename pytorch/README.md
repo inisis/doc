@@ -414,3 +414,7 @@ graph.op(op_type, *inputs, **onnx_attrs).setType(inputs[0].type().with_dtype(dty
 should split certain modules not all
 ```
 
+> * fsdp + tp
+```
+init_device_mesh
+```
