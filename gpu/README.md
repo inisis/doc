@@ -101,3 +101,8 @@ sudo nvidia-smi -pm 1 && sudo nvidia-smi -ac 1215,1410
 nvidia-smi -lmc 10501
 nvidia-smi -lgc 3105
 ```
+
+> * query pcie
+```
+nvidia-smi  --format=csv --query-gpu=pcie.link.gen.current,pcie.link.width.current
+```
