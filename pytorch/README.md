@@ -417,4 +417,5 @@ should split certain modules not all
 > * fsdp + tp
 ```
 init_device_mesh dp for internode and tp for intranode
+distributed dataloader to load data
 ```
