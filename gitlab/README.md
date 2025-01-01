@@ -180,6 +180,11 @@ git push origin branch-name
 git checkout HEAD -- file
 ```
 
+> * git checkout and cherry-pick
+```
+git reset --hard commit
+git cherry-pick commit
+```
 > * self host runner
 ```
 Setting Actions Runners
