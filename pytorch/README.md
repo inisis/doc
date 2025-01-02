@@ -431,4 +431,5 @@ distributed dataloader to load data
 FSDP:
 [0, 8, ..., 8N-8], [1, 9, ..., 8N-7], ..., [7, 15, ..., 8N-1]
 ======================================================================
+sharding intra replication inter
 ```
