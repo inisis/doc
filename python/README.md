@@ -37,3 +37,8 @@ def print_wrap(*args, **kwargs):
 
 builtins.print = print_wrap
 ``
+
+> * python executable
+```
+
+```
