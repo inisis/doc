@@ -434,3 +434,8 @@ FSDP:
 sharding intra replication inter
 dp + tp
 ```
+
+> * mixtrial
+```
+moe
+```
