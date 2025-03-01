@@ -42,3 +42,8 @@ builtins.print = print_wrap
 ```
 
 ```
+
+> * multiprocess cannot malloc
+```
+sudo sysctl -w vm.max_map_count=131072
+```
