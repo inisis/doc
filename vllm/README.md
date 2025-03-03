@@ -18,3 +18,12 @@ lm_eval --model vllm --model_args pretrained=/root/.cache/huggingface/,trust_rem
 
 lm_eval --model vllm --model_args pretrained=/data/LM/hf/DeepSeek-R1-bf16,trust_remote_code=True,tensor_parallel_size=32,enforce_eager=True,max_length=2048,gpu_memory_utilization=0.7 --task arc_challenge --output_path output/ --log_samples
 ```
+
+> * vllm infer with logits
+```
+return llm.generate(
+    prompt_token_ids=requests,
+    sampling_params=sampling_params,
+    lora_request=lora_request,
+)
+```
