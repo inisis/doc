@@ -106,3 +106,8 @@ nvidia-smi -lgc 3105
 ```
 nvidia-smi  --format=csv --query-gpu=pcie.link.gen.current,pcie.link.width.current
 ```
+
+> * nv profile
+```
+nsys ncu
+```
