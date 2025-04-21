@@ -450,7 +450,27 @@ DS_BUILD_CPU_ADAM=1 pip install deepspeed
 
 ```
 
-> *
+> * torch tensor parallel
 ```
+DTensor Linear
+DTensor(local_tensor=tensor([[[-0.0208,  0.1187, -0.0312,  ...,  0.0186, -0.0042,  0.0055],
+         [ 0.0078, -0.2002,  0.0398,  ...,  0.0309, -0.0513, -0.0361],
+         [ 0.0527, -0.1436,  0.1055,  ..., -0.0903, -0.0231,  0.0089],
+         ...,
+         [ 0.0043, -0.0664, -0.0962,  ...,  0.0198, -0.0376,  0.0141],
+         [-0.0786, -0.0986,  0.1621,  ..., -0.0461, -0.0771,  0.0125],
+         [-0.0053,  0.0315,  0.1729,  ..., -0.0166, -0.0405, -0.0042]]],
+       device='cuda:3', dtype=torch.bfloat16), device_mesh=DeviceMesh('cuda', [2, 3], mesh_dim_names=('tensor_parallel',)), placements=(Replicate(),))
+DTensor(local_tensor=tensor([[ 0.0121,  0.0221,  0.0095,  ..., -0.0520,  0.0325,  0.0205],
+        [ 0.0135, -0.0271, -0.0420,  ...,  0.0104, -0.0007,  0.0120],
+        [ 0.0021, -0.0535, -0.0109,  ...,  0.0231, -0.0148,  0.0115],
+        ...,
+        [-0.0043, -0.0396,  0.0708,  ...,  0.0049, -0.0022,  0.0020],
+        [-0.0049, -0.0143,  0.0413,  ...,  0.0050, -0.0030, -0.0002],
+        [-0.0038, -0.0165,  0.0302,  ...,  0.0082,  0.0010,  0.0026]],
+       device='cuda:3', dtype=torch.bfloat16, requires_grad=True), device_mesh=DeviceMesh('cuda', [2, 3], mesh_dim_names=('tensor_parallel',)), placements=(Shard(dim=0),))
 
+F.linear(input, weight)
+
+This is supported by pytorch framework natively
 ```
