@@ -189,3 +189,12 @@ git cherry-pick commit
 ```
 Setting Actions Runners
 ```
+
+> * git conflict
+```
+git pull --rebase
+modify conflicts
+git add
+git rebase --continue
+git commit --amend
+```
