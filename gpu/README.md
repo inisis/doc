@@ -111,3 +111,67 @@ nvidia-smi  --format=csv --query-gpu=pcie.link.gen.current,pcie.link.width.curre
 ```
 nsys ncu
 ```
+
+> * GPU benchmark using torch
+```
+import torch
+import time
+
+def stress_test_matmul(
+    size=8192,
+    iterations=100,
+    dtype=torch.float16,
+    use_streams=False,
+):
+    device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+    print(f"Using device: {device}")
+    print(f"Tensor size: {size}x{size}, dtype: {dtype}, iterations: {iterations}")
+
+    # Allocate large tensors on pinned host memory
+    a_cpu = torch.randn(size, size, dtype=dtype).pin_memory()
+    b_cpu = torch.randn(size, size, dtype=dtype).pin_memory()
+
+    # Move to GPU
+    a = a_cpu.to(device, non_blocking=True)
+    b = b_cpu.to(device, non_blocking=True)
+
+    torch.cuda.empty_cache()
+    torch.cuda.reset_peak_memory_stats(device)
+
+    # Optional: prepare CUDA streams
+    streams = [torch.cuda.Stream(device=device) for _ in range(4)] if use_streams else [None]
+
+    total_time = 0.0
+    while(1):
+        stream = streams[0]
+        if stream:
+            with torch.cuda.stream(stream):
+                start = torch.cuda.Event(enable_timing=True)
+                end = torch.cuda.Event(enable_timing=True)
+                start.record()
+                _ = torch.matmul(a, b)
+                end.record()
+                stream.synchronize()
+        else:
+            start = torch.cuda.Event(enable_timing=True)
+            end = torch.cuda.Event(enable_timing=True)
+            start.record()
+            _ = torch.matmul(a, b)
+            end.record()
+            torch.cuda.synchronize()
+        elapsed = start.elapsed_time(end)  # ms
+        total_time += elapsed
+
+    # Show peak memory usage
+    peak_mem = torch.cuda.max_memory_allocated(device) / 1024**2
+    print(f"\nAverage time per matmul: {total_time / iterations:.2f} ms")
+    print(f"Peak memory allocated: {peak_mem:.2f} MB")
+
+if __name__ == "__main__":
+    stress_test_matmul(
+        size=8192,           # Matrix size
+        iterations=100,      # Number of iterations
+        dtype=torch.float16, # Use float16 to enable Tensor Cores
+        use_streams=True     # Stress test with CUDA streams
+    )
+```
