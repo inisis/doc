@@ -27,3 +27,12 @@ return llm.generate(
     lora_request=lora_request,
 )
 ```
+
+> * RuntimeError: Cannot re-initialize CUDA in forked subprocess. To use CUDA with multiprocessing, you must use the 'spawn' start method
+```
+export VLLM_WORKER_MULTIPROC_METHOD=spawn
+
+and wrap VLLM code with
+
+if __name__ == "__main__":
+```
