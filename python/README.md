@@ -36,7 +36,7 @@ def print_wrap(*args, **kwargs):
     original_print("FN:",caller.filename,"Line:", caller.lineno,"Func:", caller.function,":::", *args, **kwargs)
 
 builtins.print = print_wrap
-``
+```
 
 > * python executable
 ```
@@ -46,4 +46,9 @@ builtins.print = print_wrap
 > * multiprocess cannot malloc
 ```
 sudo sysctl -w vm.max_map_count=131072
+```
+
+> * pdb generator
+```
+print([x for _, x in zip(range(10), generator)])
 ```
