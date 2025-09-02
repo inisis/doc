@@ -107,7 +107,7 @@ curl -X GET http://192.168.0.18:13508/v2/_catalog
 curl -X GET http://192.168.0.18:13508/v2/katago/tags/list
 ```
 
-> *
+> * check pid belongs to which docker
 ```
-
+cat /proc/PID/cgroup
 ```
