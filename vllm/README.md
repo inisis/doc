@@ -36,3 +36,9 @@ and wrap VLLM code with
 
 if __name__ == "__main__":
 ```
+
+> * custom model inference
+```
+model registration
+operator implementation
+```
