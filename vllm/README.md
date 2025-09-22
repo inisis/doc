@@ -42,3 +42,8 @@ if __name__ == "__main__":
 model registration
 operator implementation
 ```
+
+> * disable chunk prefill
+```
+export VLLM_USE_V1=0 
+```
