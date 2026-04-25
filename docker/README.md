@@ -111,3 +111,18 @@ curl -X GET http://192.168.0.18:13508/v2/katago/tags/list
 ```
 cat /proc/PID/cgroup
 ```
+
+> * setting docker proxy
+```
+sudo mkdir -p /etc/systemd/system/docker.service.d
+sudo nano /etc/systemd/system/docker.service.d/http-proxy.conf
+
+[Service]
+Environment="HTTP_PROXY=http://127.0.0.1:7890"
+Environment="HTTPS_PROXY=http://127.0.0.1:7890"
+Environment="ALL_PROXY=socks5://127.0.0.1:7890"
+
+sudo systemctl daemon-reexec
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+```
