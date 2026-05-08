@@ -2,4 +2,5 @@
 ```
 export TRITON_CACHE_DIR=/home/inisis/triton_cache
 export TILELANG_CACHE_DIR=/home/inisis/tilelang_cache
+export TILELANG_TMP_DIR=/home/inisis/tilelang_tmp
 ```
