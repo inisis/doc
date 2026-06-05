@@ -6,5 +6,5 @@ bind-address: "*"
 
 > * skip proxy for localhost
 ```
-export NO_PROXY=localhost,127.0.0.1
+export NO_PROXY=localhost,127.0.0.1,0,0.0.0
 ```
