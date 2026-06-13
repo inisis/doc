@@ -363,3 +363,8 @@ yy100p
 ```
 du -hd 1 . | sort -hr
 ```
+
+> * check process running time and create time
+```
+ps -p <PID> -o pid,lstart,etime,cmd
+```
