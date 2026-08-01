@@ -188,6 +188,7 @@ git cherry-pick commit
 > * self host runner
 ```
 Setting Actions Runners
+RUNNER_ALLOW_RUNASROOT=true ./run.sh
 ```
 
 > * git conflict
